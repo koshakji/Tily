@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Square {
+struct Square {
     let row : Int
     let column : Int
     var shape : Int?
