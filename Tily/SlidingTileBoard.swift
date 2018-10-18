@@ -9,7 +9,11 @@
 import Foundation
 
 enum Direction: CaseIterable {
-    case up, down, left, right
+    case Up, Down, Left, Right
+}
+
+protocol SlidingTileBoardDelegate {
+    func slidingTileGameOver()
 }
 
 class SlidingTileBoard {
@@ -18,19 +22,24 @@ class SlidingTileBoard {
     var array = [[Square]]()
     var shapes = [Int: [Square]]()
     
+    var delegate : SlidingTileBoardDelegate?
+    
     var gameOver : Bool { get {
         if let squares = shapes[0] {
-            return squares.filter {
+            let endSquares = squares.filter {
                 $0.row == height - 1 && $0.column == width - 1
-            }.count > 0
+            }
+            print(endSquares.count)
+            return endSquares.count > 0
         }
         return false
         }
     }
     
-    init(width: Int = 4, height: Int = 4) {
+    init(width: Int = 4, height: Int = 4, delegate: SlidingTileBoardDelegate? = nil) {
         self.width = width
         self.height = height
+        self.delegate = delegate
         
         for i in 0 ..< height {
             array.append([])
@@ -88,9 +97,10 @@ class SlidingTileBoard {
             movedShapeSquares.append(nextSquare)
         }
         
-        
-        
         shapes[shape] = movedShapeSquares
+        if gameOver {
+           delegate?.slidingTileGameOver()
+        }
     }
     
     
@@ -112,13 +122,13 @@ class SlidingTileBoard {
     
     func sortClosure(for direction: Direction) -> ((Square,Square) -> Bool) {
         switch direction {
-        case .up:
+        case .Up:
             return { $0.row < $1.row }
-        case .down:
+        case .Down:
             return { $0.row > $1.row }
-        case .left:
+        case .Left:
             return { $0.column < $1.column }
-        case .right:
+        case .Right:
             return { $0.column > $1.column }
             
         }
@@ -126,13 +136,13 @@ class SlidingTileBoard {
     
     func nextSquareLocation(from square: Square, _ direction: Direction) -> (i: Int, j: Int) {
         switch direction {
-        case .up:
+        case .Up:
             return (i: square.row - 1, j: square.column)
-        case .down:
+        case .Down:
             return (i: square.row + 1, j: square.column)
-        case .left:
+        case .Left:
             return (i: square.row, j: square.column - 1)
-        case .right:
+        case .Right:
             return (i: square.row, j: square.column + 1)
             
         }
@@ -142,6 +152,7 @@ class SlidingTileBoard {
         let location = nextSquareLocation(from: Square(row: row, column: column), direction)
         guard location.i < height && location.i >= 0 else { return false }
         guard location.j < width && location.j >= 0 else { return false }
-        return array[location.i][location.j].shape == array[row][column].shape
+        guard let shape = array[location.i][location.j].shape else { return false }
+        return shape == array[row][column].shape
     }
 }

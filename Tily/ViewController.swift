@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     @IBOutlet weak var mainStackView: UIStackView!
     
-    let tileBoard = SlidingTileBoard(width: 4,height: 4)
+    var tileBoard = SlidingTileBoard(width: 4, height: 4)
     var buttons = [[UIButton]]()
     var count = 0
     var shape : Int? = nil
@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        tileBoard.delegate = self
         for i in 0 ..< tileBoard.height {
             buttons.append([])
             for j in 0 ..< tileBoard.width {
@@ -66,22 +67,42 @@ class ViewController: UIViewController {
     }
     
     @IBAction func rightSwipe(_ sender: Any) {
-        moveShapeIn(direction: .right)
+        moveShapeIn(direction: .Right)
     }
     @IBAction func leftSwipe(_ sender: Any) {
-        moveShapeIn(direction: .left)
+        moveShapeIn(direction: .Left)
     }
     @IBAction func upSwipe(_ sender: Any) {
-        moveShapeIn(direction: .up)
+        moveShapeIn(direction: .Up)
     }
     @IBAction func downSwipe(_ sender: Any) {
-        moveShapeIn(direction: .down)
+        moveShapeIn(direction: .Down)
     }
     
     func moveShapeIn(direction: Direction) {
         guard let shape = self.shape else { return }
         tileBoard.move(shape: shape, direction)
         setButtonTitles()
+        for square in tileBoard.shapes[0]! {
+            print("i\(square.row)j\(square.column)")
+        }
+        print("\n\n\n")
     }
     
+}
+
+extension MainViewController: SlidingTileBoardDelegate {
+    func slidingTileGameOver() {
+        let alertController = UIAlertController(title: "You Won!", message: "congrats! 🎉", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        let restartAction = UIAlertAction(title: "Restart", style: .default){ (_) in
+            self.tileBoard = SlidingTileBoard(width: 4, height: 4, delegate: self)
+            self.shape = nil
+            self.setButtonTitles()
+            return
+        }
+        alertController.addAction(restartAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
+    }
 }
