@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Square {
+struct Square: Equatable, Codable {
     let row : Int
     let column : Int
     var shape : Int?
@@ -25,5 +25,9 @@ struct Square {
         self.row = 0
         self.column = 0
         self.shape = nil
+    }
+    
+    static func ==(lhs: Square, rhs: Square) -> Bool {
+        return lhs.row == rhs.row && lhs.column == rhs.column && lhs.shape == rhs.shape
     }
 }

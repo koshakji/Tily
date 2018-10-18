@@ -15,6 +15,9 @@
 		16DB09A221762E2200EF1487 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB09A121762E2200EF1487 /* Square.swift */; };
 		16DB09A621788FE200EF1487 /* SlidingTileBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB09A521788FE200EF1487 /* SlidingTileBoard.swift */; };
 		16DB09A82178D53200EF1487 /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB09A72178D53200EF1487 /* UIButton + extension.swift */; };
+		16DB09AA217906DF00EF1487 /* GameChooserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB09A9217906DF00EF1487 /* GameChooserTableViewController.swift */; };
+		16DB09AE21790B5C00EF1487 /* TileBoardFIleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB09AD21790B5C00EF1487 /* TileBoardFIleManager.swift */; };
+		16DB09B02179184200EF1487 /* defaultGameBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB09AF2179184200EF1487 /* defaultGameBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		16DB09A121762E2200EF1487 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		16DB09A521788FE200EF1487 /* SlidingTileBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingTileBoard.swift; sourceTree = "<group>"; };
 		16DB09A72178D53200EF1487 /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
+		16DB09A9217906DF00EF1487 /* GameChooserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameChooserTableViewController.swift; sourceTree = "<group>"; };
+		16DB09AD21790B5C00EF1487 /* TileBoardFIleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileBoardFIleManager.swift; sourceTree = "<group>"; };
+		16DB09AF2179184200EF1487 /* defaultGameBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultGameBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +66,15 @@
 		16DB098C21762D4F00EF1487 /* Tily */ = {
 			isa = PBXGroup;
 			children = (
+				16DB09AD21790B5C00EF1487 /* TileBoardFIleManager.swift */,
 				16DB09A521788FE200EF1487 /* SlidingTileBoard.swift */,
 				16DB09A121762E2200EF1487 /* Square.swift */,
 				16DB098D21762D4F00EF1487 /* AppDelegate.swift */,
 				16DB098F21762D4F00EF1487 /* ViewController.swift */,
 				16DB09A72178D53200EF1487 /* UIButton + extension.swift */,
 				16DB099121762D4F00EF1487 /* Main.storyboard */,
+				16DB09A9217906DF00EF1487 /* GameChooserTableViewController.swift */,
+				16DB09AF2179184200EF1487 /* defaultGameBuilder.swift */,
 				16DB099421762D5300EF1487 /* Assets.xcassets */,
 				16DB099621762D5300EF1487 /* LaunchScreen.storyboard */,
 				16DB099921762D5300EF1487 /* Info.plist */,
@@ -145,6 +154,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				16DB09A221762E2200EF1487 /* Square.swift in Sources */,
+				16DB09B02179184200EF1487 /* defaultGameBuilder.swift in Sources */,
+				16DB09AE21790B5C00EF1487 /* TileBoardFIleManager.swift in Sources */,
+				16DB09AA217906DF00EF1487 /* GameChooserTableViewController.swift in Sources */,
 				16DB09A621788FE200EF1487 /* SlidingTileBoard.swift in Sources */,
 				16DB099021762D4F00EF1487 /* ViewController.swift in Sources */,
 				16DB098E21762D4F00EF1487 /* AppDelegate.swift in Sources */,

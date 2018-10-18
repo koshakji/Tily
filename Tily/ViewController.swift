@@ -8,11 +8,13 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainGameViewController: UIViewController {
 
+    static var colors = [UIColor.red, UIColor.blue, UIColor.brown, UIColor.cyan, UIColor.darkGray, UIColor.gray, UIColor.green, UIColor.lightGray, UIColor.magenta, UIColor.orange, UIColor.purple, UIColor.yellow, UIColor.black, UIColor.white]
+    
     @IBOutlet weak var mainStackView: UIStackView!
     
-    var tileBoard = SlidingTileBoard(width: 4, height: 4)
+    var tileBoard : SlidingTileBoard!
     var buttons = [[UIButton]]()
     var count = 0
     var shape : Int? = nil
@@ -20,6 +22,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print(MainGameViewController.colors.count)
         tileBoard.delegate = self
         for i in 0 ..< tileBoard.height {
             buttons.append([])
@@ -57,11 +60,16 @@ class MainViewController: UIViewController {
     func setTitleFor(button: UIButton, i: Int, j: Int) {
          button.setTitle("\(tileBoard.array[i][j].shape ?? -1)", for: .normal)
     }
+    func setColorFor(button: UIButton, i: Int, j: Int) {
+        let number = tileBoard.array[i][j].shape ?? MainGameViewController.colors.count - 1
+        button.layer.backgroundColor = (MainGameViewController.colors[number] as! CGColor)
+    }
     
     func setButtonTitles() {
         for i in 0 ..< buttons.count {
             for j in 0 ..< buttons[i].count {
                 setTitleFor(button: buttons[i][j], i: i, j: j)
+                setColorFor(button: buttons[i][j], i: i, j: j)
             }
         }
     }
@@ -83,15 +91,11 @@ class MainViewController: UIViewController {
         guard let shape = self.shape else { return }
         tileBoard.move(shape: shape, direction)
         setButtonTitles()
-        for square in tileBoard.shapes[0]! {
-            print("i\(square.row)j\(square.column)")
-        }
-        print("\n\n\n")
     }
     
 }
 
-extension MainViewController: SlidingTileBoardDelegate {
+extension MainGameViewController: SlidingTileBoardDelegate {
     func slidingTileGameOver() {
         let alertController = UIAlertController(title: "You Won!", message: "congrats! 🎉", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)

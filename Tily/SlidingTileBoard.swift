@@ -16,7 +16,8 @@ protocol SlidingTileBoardDelegate {
     func slidingTileGameOver()
 }
 
-class SlidingTileBoard {
+class SlidingTileBoard: Codable, Equatable {
+    let name: String
     let width : Int
     let height : Int
     var array = [[Square]]()
@@ -36,7 +37,8 @@ class SlidingTileBoard {
         }
     }
     
-    init(width: Int = 4, height: Int = 4, delegate: SlidingTileBoardDelegate? = nil) {
+    init(name: String = "game", width: Int = 4, height: Int = 4, delegate: SlidingTileBoardDelegate? = nil) {
+        self.name = name
         self.width = width
         self.height = height
         self.delegate = delegate
@@ -47,11 +49,6 @@ class SlidingTileBoard {
                 array[i].append(Square(row: i, column: j))
             }
         }
-        
-        shapes[0] = [ array[1][1], array[2][1], array[2][2] ]
-        shapes[1] = [ array[1][2] ]
-        initializeSquareShapes()
-        
     }
     
     func initializeSquareShapes() {
@@ -154,5 +151,17 @@ class SlidingTileBoard {
         guard location.j < width && location.j >= 0 else { return false }
         guard let shape = array[location.i][location.j].shape else { return false }
         return shape == array[row][column].shape
+    }
+    
+    static func == (lhs: SlidingTileBoard, rhs: SlidingTileBoard) -> Bool {
+        return lhs.array == rhs.array
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case width
+        case height
+        case array
+        case shapes
     }
 }
