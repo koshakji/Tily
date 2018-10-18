@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Direction {
+enum Direction: CaseIterable {
     case up, down, left, right
 }
 
@@ -16,7 +16,7 @@ class SlidingTileBoard {
     let width : Int
     let height : Int
     var array = [[Square]]()
-    var shapes : [Int: [Square]]
+    var shapes = [Int: [Square]]()
     
     var gameOver : Bool { get {
         if let squares = shapes[0] {
@@ -39,7 +39,8 @@ class SlidingTileBoard {
             }
         }
         
-        shapes = [ 0 : [ Square(row: 0, column: 0, shape: 0) ] ]
+        shapes[0] = [ array[1][1], array[2][1], array[2][2] ]
+        shapes[1] = [ array[1][2] ]
         initializeSquareShapes()
         
     }
@@ -69,25 +70,59 @@ class SlidingTileBoard {
     }
     
     func move(shape: Int, _ direction: Direction) {
-        guard canMove(shape: shape, direction) else { return }
-        let squares = shapes[shape]!
+        guard canMove(shape: shape, direction) else {
+            print("cant")
+            return
+        }
+        var squares = shapes[shape]!
         var movedShapeSquares = [Square]()
         
+        squares.sort(by: sortClosure(for: direction))
+        
         for square in squares {
-            
-            let oldLocation = array[square.row][square.column]
-            square.shape = nil
-            oldLocation.shape = nil
+            array[square.row][square.column].shape = nil
             
             let nextLocation = nextSquareLocation(from: square, direction)
+            array[nextLocation.i][nextLocation.j].shape = shape
             let nextSquare = array[nextLocation.i][nextLocation.j]
-            nextSquare.shape = shape
             movedShapeSquares.append(nextSquare)
         }
+        
+        
         
         shapes[shape] = movedShapeSquares
     }
     
+    
+    func printArray() {
+        
+        var string = ""
+        for i in 0 ..< height {
+            for j in 0 ..< width {
+                if let shape = array[i][j].shape {
+                    string += "i:\(i)j:\(j) = \(shape)/  "
+                } else {
+                    string += "i:\(i)j:\(j) = nil/  "
+                }
+            }
+            string += "\n"
+        }
+        print(string)
+    }
+    
+    func sortClosure(for direction: Direction) -> ((Square,Square) -> Bool) {
+        switch direction {
+        case .up:
+            return { $0.row < $1.row }
+        case .down:
+            return { $0.row > $1.row }
+        case .left:
+            return { $0.column < $1.column }
+        case .right:
+            return { $0.column > $1.column }
+            
+        }
+    }
     
     func nextSquareLocation(from square: Square, _ direction: Direction) -> (i: Int, j: Int) {
         switch direction {
@@ -101,5 +136,12 @@ class SlidingTileBoard {
             return (i: square.row, j: square.column + 1)
             
         }
+    }
+    
+    func sameShapeNeighborFor(row: Int, column: Int, at direction: Direction) -> Bool {
+        let location = nextSquareLocation(from: Square(row: row, column: column), direction)
+        guard location.i < height && location.i >= 0 else { return false }
+        guard location.j < width && location.j >= 0 else { return false }
+        return array[location.i][location.j].shape == array[row][column].shape
     }
 }
