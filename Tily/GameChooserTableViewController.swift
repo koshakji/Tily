@@ -48,7 +48,10 @@ class GameChooserTableViewController: UITableViewController {
         cell.imageView?.image = UIImage(named: game.name)
         return cell
     }
-
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
     
 
     // MARK: - Navigation
