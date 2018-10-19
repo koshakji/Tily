@@ -15,10 +15,9 @@ class GameChooserTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //games = tileBoardFileManager.read()
+        games = tileBoardFileManager.read()
         
-        games = DefaultGameBuilder().games
-        
+        //games = DefaultGameBuilder().games
         //tileBoardFileManager.save(games: games)
     }
 

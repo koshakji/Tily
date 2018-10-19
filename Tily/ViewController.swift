@@ -22,13 +22,13 @@ class MainGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print(MainGameViewController.colors.count)
         tileBoard.delegate = self
         for i in 0 ..< tileBoard.height {
             buttons.append([])
             for j in 0 ..< tileBoard.width {
                 let button = UIButton()
                 setTitleFor(button: button, i: i, j: j)
+                setColorFor(button: button, i: i, j: j)
                 button.setTitleColor(UIColor.black, for: .normal)
                 button.tag = i * tileBoard.width + j
                 button.addTarget(self, action: #selector(tappedAt(_:)), for: .primaryActionTriggered)
@@ -62,7 +62,7 @@ class MainGameViewController: UIViewController {
     }
     func setColorFor(button: UIButton, i: Int, j: Int) {
         let number = tileBoard.array[i][j].shape ?? MainGameViewController.colors.count - 1
-        button.layer.backgroundColor = (MainGameViewController.colors[number] as! CGColor)
+        button.layer.backgroundColor = (MainGameViewController.colors[number].cgColor)
     }
     
     func setButtonTitles() {
