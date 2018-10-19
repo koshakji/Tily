@@ -22,6 +22,7 @@ class SlidingTileBoard: Codable, Equatable {
     let height : Int
     var array = [[Square]]()
     var shapes = [Int: [Square]]()
+    var moves : Int
     
     var delegate : SlidingTileBoardDelegate?
     
@@ -30,7 +31,6 @@ class SlidingTileBoard: Codable, Equatable {
             let endSquares = squares.filter {
                 $0.row == height - 1 && $0.column == width - 1
             }
-            print(endSquares.count)
             return endSquares.count > 0
         }
         return false
@@ -42,6 +42,7 @@ class SlidingTileBoard: Codable, Equatable {
         self.width = width
         self.height = height
         self.delegate = delegate
+        self.moves = 0
         
         for i in 0 ..< height {
             array.append([])
@@ -49,6 +50,15 @@ class SlidingTileBoard: Codable, Equatable {
                 array[i].append(Square(row: i, column: j))
             }
         }
+    }
+    
+    init(copyFrom game: SlidingTileBoard) {
+        self.name = game.name
+        self.width = game.width
+        self.height = game.height
+        self.array = game.array
+        self.shapes = game.shapes
+        self.moves = 0
     }
     
     func initializeSquareShapes() {
@@ -77,7 +87,6 @@ class SlidingTileBoard: Codable, Equatable {
     
     func move(shape: Int, _ direction: Direction) {
         guard canMove(shape: shape, direction) else {
-            print("cant")
             return
         }
         var squares = shapes[shape]!
@@ -95,6 +104,7 @@ class SlidingTileBoard: Codable, Equatable {
         }
         
         shapes[shape] = movedShapeSquares
+        moves += 1
         if gameOver {
            delegate?.slidingTileGameOver()
         }
@@ -163,5 +173,6 @@ class SlidingTileBoard: Codable, Equatable {
         case height
         case array
         case shapes
+        case moves
     }
 }
