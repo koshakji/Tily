@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIButton {
+extension UIView {
     
     func addBorder(side: Direction, color: UIColor, width: CGFloat) {
         let border = CALayer()
@@ -19,13 +19,18 @@ extension UIButton {
         case .Up:
             border.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: width)
         case .Down:
-            border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
+            border.frame = CGRect(x: 0, y: frame.size.height - width, width: frame.size.width, height: width)
         case .Left:
-            border.frame = CGRect(x: 0, y: 0, width: width, height: self.frame.size.height)
+            border.frame = CGRect(x: 0, y: 0, width: width, height: frame.size.height)
         case .Right:
-            border.frame = CGRect(x: self.frame.size.width - width, y: 0, width: width, height: self.frame.size.height)
+            border.frame = CGRect(x: frame.size.width - width, y: 0, width: width, height: frame.size.height)
         }
         
         self.layer.addSublayer(border)
+    }
+    func addBorders( sides: [Direction] = Array(Direction.allCases), color: UIColor = .black, width: CGFloat) {
+        for side in sides {
+            addBorder(side: side, color: color, width: width)
+        }
     }
 }
