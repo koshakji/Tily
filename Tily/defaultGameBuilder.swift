@@ -64,7 +64,7 @@ class DefaultGameBuilder {
         let seven = SlidingTileBoard(name: "8 Pieces")
         seven.shapes[0] = [ seven.array[0][1], seven.array[0][2] ]
         seven.shapes[1] = [ seven.array[0][3], seven.array[1][3] ]
-        seven.shapes[2] = [ seven.array[1][0], seven.array[1][2] ]
+        seven.shapes[2] = [ seven.array[1][0], seven.array[1][1] ]
         seven.shapes[3] = [ seven.array[2][0], seven.array[3][0] ]
         seven.shapes[4] = [ seven.array[2][3], seven.array[3][3] ]
         seven.shapes[5] = [ seven.array[2][1], seven.array[2][2] ]
@@ -178,7 +178,7 @@ class DefaultGameBuilder {
         forteen.initializeSquareShapes()
         
         
-        let fifteen = SlidingTileBoard(name: "5 Pieces")
+        let fifteen = SlidingTileBoard(name: "5 Pieces 2.0")
         fifteen.shapes[0] = [ fifteen.array[0][3] ]
         fifteen.shapes[1] = [ fifteen.array[3][3] ]
         fifteen.shapes[2] = [ fifteen.array[2][0], fifteen.array[2][1] ]
