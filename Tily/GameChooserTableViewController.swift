@@ -12,13 +12,23 @@ class GameChooserTableViewController: UITableViewController {
 
     let tileBoardFileManager = TileBoardFileManager()
     var games: [SlidingTileBoard]!
+    var launchedBefore : Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        games = tileBoardFileManager.read()
         
-        //games = DefaultGameBuilder().games
-        //tileBoardFileManager.save(games: games)
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            self.launchedBefore = appDelegate.launchedBefore
+        } else {
+            fatalError()
+        }
+        
+        if launchedBefore! {
+            games = tileBoardFileManager.read()
+        } else {
+            games = DefaultGameBuilder().games
+            guard tileBoardFileManager.save(games: games) else { fatalError() }
+        }
     }
 
     // MARK: - Table view data source
@@ -35,6 +45,7 @@ class GameChooserTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath)
         let game = games[indexPath.row]
         cell.textLabel?.text = game.name
+        cell.imageView?.image = UIImage(named: game.name)
         return cell
     }
 
@@ -47,7 +58,8 @@ class GameChooserTableViewController: UITableViewController {
         if segue.identifier == "loadGameSegue" {
             guard let mainGameVC = segue.destination as? MainGameViewController else { return }
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            mainGameVC.tileBoard = games[indexPath.row]
+            let game = games[indexPath.row]
+            mainGameVC.tileBoard = SlidingTileBoard(copyFrom: game)
         }
     }
 }
