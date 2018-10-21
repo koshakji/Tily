@@ -93,8 +93,6 @@ class MainGameViewController: UIViewController {
         let shapeNumber = tileBoard.array[location.i][location.j].shape
         guard let shape = shapeNumber else { return }
         tileBoard.move(shape: shape, direction)
-        setButtonColors()
-        
     }
     
     // MARK: Helper Functions
@@ -115,6 +113,14 @@ class MainGameViewController: UIViewController {
             for j in 0 ..< buttons[i].count {
                 setColorFor(button: buttons[i][j], i: i, j: j)
             }
+        }
+    }
+    
+    func setColorForSquares(array squares: [Square]) {
+        for square in squares {
+            let row = square.row
+            let column = square.column
+            setColorFor(button: buttons[row][column], i: row, j: column)
         }
     }
     
@@ -153,5 +159,10 @@ extension MainGameViewController: SlidingTileBoardDelegate {
         }
         alertController.addAction(okAction)
         present(alertController, animated: true)
+    }
+    
+    func squaresMoved(old: [Square], new: [Square]) {
+        setColorForSquares(array: old)
+        setColorForSquares(array: new)
     }
 }

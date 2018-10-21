@@ -14,6 +14,7 @@ enum Direction: CaseIterable {
 
 protocol SlidingTileBoardDelegate {
     func slidingTileGameOver()
+    func squaresMoved(old: [Square], new: [Square])
 }
 
 class SlidingTileBoard: Codable, Equatable {
@@ -105,6 +106,7 @@ class SlidingTileBoard: Codable, Equatable {
         
         shapes[shape] = movedShapeSquares
         moves += 1
+        delegate?.squaresMoved(old: squares, new: movedShapeSquares)
         if gameOver {
            delegate?.slidingTileGameOver()
         }
@@ -175,4 +177,8 @@ class SlidingTileBoard: Codable, Equatable {
         case shapes
         case moves
     }
+}
+
+extension SlidingTileBoardDelegate {
+    func squaresMoved(old: [Square], new: [Square]) {}
 }
