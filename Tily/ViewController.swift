@@ -116,7 +116,7 @@ class MainGameViewController: UIViewController {
         }
     }
     
-    func setColorForSquares(array squares: [Square]) {
+    func setColorForSquares(set squares: Set<Square>) {
         for square in squares {
             let row = square.row
             let column = square.column
@@ -162,7 +162,8 @@ extension MainGameViewController: SlidingTileBoardDelegate {
     }
     
     func squaresMoved(old: [Square], new: [Square]) {
-        setColorForSquares(array: old)
-        setColorForSquares(array: new)
+        let both : [Square] = old + new
+        let bothSet = Set<Square>(both)
+        setColorForSquares(set: bothSet)
     }
 }
