@@ -46,6 +46,7 @@ class GameChooserTableViewController: UITableViewController {
         let game = games[indexPath.row]
         cell.textLabel?.text = game.name
         cell.imageView?.image = UIImage(named: game.name)
+        cell.detailTextLabel?.text = nil
         return cell
     }
     

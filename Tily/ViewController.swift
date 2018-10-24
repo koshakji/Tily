@@ -16,6 +16,8 @@ class MainGameViewController: UIViewController {
     
     var tileBoard : SlidingTileBoard!
     var buttons = [[UIView]]()
+    var bfsPlayer : BFSPlayer!
+    var dfsPlayer: DFSPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,8 @@ class MainGameViewController: UIViewController {
             lineStackView.axis = .horizontal
             mainStackView.addArrangedSubview(lineStackView)
         }
+        bfsPlayer = BFSPlayer(tileBoard: tileBoard)
+        dfsPlayer = DFSPlayer(tileBoard: tileBoard)
     }
 
     // MARK: Setup Views
@@ -86,6 +90,24 @@ class MainGameViewController: UIViewController {
     @objc func selectShapeAndSwipeDown(_ sender: UISwipeGestureRecognizer) {
         selectAndMoveShape(at: sender.view!, to: .Down)
     }
+    
+    @IBAction func startDFSPlayer(_ sender: Any) {
+        let result = dfsPlayer.play()
+        if let result = result {
+            result.printArray()
+        } else {
+            print("nil")
+        }
+    }
+    @IBAction func startBFSPlayer(_ sender: Any) {
+        let result = bfsPlayer.play()
+        if let result = result {
+            result.printArray()
+        } else {
+            print("nil")
+        }
+    }
+    
     
     // MARK: ViewModel
     func selectAndMoveShape(at button: UIView, to direction: Direction) {
@@ -133,7 +155,7 @@ class MainGameViewController: UIViewController {
         UIColor(red: 34/255, green: 4/255, blue: 57/255, alpha: 1), //dark violet hello
         
         UIColor(red: 68/255, green: 91/255, blue: 167/255, alpha: 1), //medium blue
-        UIColor(red: 247/255, green: 82/255, blue: 82/255, alpha: 1), //medium red
+        UIColor(red: 32/255, green: 205/255, blue: 221/255, alpha: 1), //cyan ish
         UIColor(red: 66/255, green: 197/255, blue: 66/255, alpha: 1), //medium green
         UIColor(red: 83/255, green: 43/255, blue: 114/255, alpha: 1), //medium violet hello
         UIColor(red: 247/255, green: 196/255, blue: 82/255, alpha: 1), //medium yellow

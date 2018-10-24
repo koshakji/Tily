@@ -59,7 +59,8 @@ class SlidingTileBoard: Codable, Equatable {
         self.height = game.height
         self.array = game.array
         self.shapes = game.shapes
-        self.moves = 0
+        self.moves = game.moves
+        self.delegate = game.delegate
     }
     
     func initializeSquareShapes() {
@@ -112,6 +113,29 @@ class SlidingTileBoard: Codable, Equatable {
         }
     }
     
+    func moveState(shape: Int, _ direction: Direction) -> SlidingTileBoard? {
+        if canMove(shape: shape, direction) {
+            let newGame = SlidingTileBoard(copyFrom: self)
+            newGame.move(shape: shape, direction)
+            return newGame
+        } else {
+            return nil
+        }
+        
+    }
+    
+    func allPossibleMoves() -> Array<SlidingTileBoard> {
+        let allDirections = Direction.allCases
+        var result = Array<SlidingTileBoard>()
+        for (shape, _) in shapes {
+            for direction in allDirections {
+                if let state = moveState(shape: shape, direction) {
+                 result.append(state)
+                }
+            }
+        }
+        return result
+    }
     
     func printArray() {
         
@@ -181,4 +205,14 @@ class SlidingTileBoard: Codable, Equatable {
 
 extension SlidingTileBoardDelegate {
     func squaresMoved(old: [Square], new: [Square]) {}
+}
+
+
+extension SlidingTileBoard : Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(width)
+        hasher.combine(height)
+        hasher.combine(array)
+        hasher.combine(shapes)
+    }
 }
