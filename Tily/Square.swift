@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Square: Equatable, Codable, Hashable {
+struct Square: Codable, Hashable {
     let row : Int
     let column : Int
     var shape : Int?

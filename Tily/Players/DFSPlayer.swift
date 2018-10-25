@@ -8,24 +8,6 @@
 
 import Foundation
 
-class DFSPlayer: Player {
+class DFSPlayer: Player<Stack<SlidingTileBoard>> {
     
-    func play() -> SlidingTileBoard? {
-        var stack = [tileBoard]
-        while !stack.isEmpty {
-            let board = stack.removeLast()
-            board.printArray()
-            
-            if board.gameOver {
-                return board
-            } else {
-                for nextNode in board.allPossibleMoves() {
-                    if !visited.contains(nextNode) {
-                        stack.append(nextNode)
-                    }
-                }
-            }
-        }
-        return nil
-    }
 }

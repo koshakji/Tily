@@ -17,7 +17,7 @@ protocol SlidingTileBoardDelegate {
     func squaresMoved(old: [Square], new: [Square])
 }
 
-class SlidingTileBoard: Codable, Equatable {
+class SlidingTileBoard: Codable {
     let name: String
     let width : Int
     let height : Int
@@ -143,9 +143,9 @@ class SlidingTileBoard: Codable, Equatable {
         for i in 0 ..< height {
             for j in 0 ..< width {
                 if let shape = array[i][j].shape {
-                    string += "i:\(i)j:\(j) = \(shape)/  "
+                    string += "i:\(i)j:\(j) = \(shape) |  "
                 } else {
-                    string += "i:\(i)j:\(j) = nil/  "
+                    string += "i:\(i)j:\(j) = n |  "
                 }
             }
             string += "\n"
@@ -177,20 +177,7 @@ class SlidingTileBoard: Codable, Equatable {
             return (i: square.row, j: square.column - 1)
         case .Right:
             return (i: square.row, j: square.column + 1)
-            
         }
-    }
-    
-    func sameShapeNeighborFor(row: Int, column: Int, at direction: Direction) -> Bool {
-        let location = nextSquareLocation(from: Square(row: row, column: column), direction)
-        guard location.i < height && location.i >= 0 else { return false }
-        guard location.j < width && location.j >= 0 else { return false }
-        guard let shape = array[location.i][location.j].shape else { return false }
-        return shape == array[row][column].shape
-    }
-    
-    static func == (lhs: SlidingTileBoard, rhs: SlidingTileBoard) -> Bool {
-        return lhs.array == rhs.array
     }
     
     enum CodingKeys: String, CodingKey {
@@ -210,9 +197,16 @@ extension SlidingTileBoardDelegate {
 
 extension SlidingTileBoard : Hashable {
     func hash(into hasher: inout Hasher) {
-        hasher.combine(width)
-        hasher.combine(height)
         hasher.combine(array)
-        hasher.combine(shapes)
+    }
+    
+    static func == (lhs: SlidingTileBoard, rhs: SlidingTileBoard) -> Bool {
+        return lhs.array == rhs.array
+    }
+}
+
+extension SlidingTileBoard: Comparable {
+    static func < (lhs: SlidingTileBoard, rhs: SlidingTileBoard) -> Bool {
+        return lhs.moves < rhs.moves
     }
 }

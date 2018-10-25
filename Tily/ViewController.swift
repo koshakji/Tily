@@ -12,21 +12,14 @@ class MainGameViewController: UIViewController {
     
     
     @IBOutlet weak var mainStackView: UIStackView!
-    @IBOutlet weak var viewTitle: UINavigationItem!
     
     var tileBoard : SlidingTileBoard!
     var buttons = [[UIView]]()
-    var bfsPlayer : BFSPlayer!
-    var dfsPlayer: DFSPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tileBoard.delegate = self
-        
-        viewTitle.title = tileBoard.name
-        let dismissItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(exitGame))
-        viewTitle.rightBarButtonItem = dismissItem
         
         for i in 0 ..< tileBoard.height {
             buttons.append([])
@@ -46,8 +39,6 @@ class MainGameViewController: UIViewController {
             lineStackView.axis = .horizontal
             mainStackView.addArrangedSubview(lineStackView)
         }
-        bfsPlayer = BFSPlayer(tileBoard: tileBoard)
-        dfsPlayer = DFSPlayer(tileBoard: tileBoard)
     }
 
     // MARK: Setup Views
@@ -90,24 +81,6 @@ class MainGameViewController: UIViewController {
     @objc func selectShapeAndSwipeDown(_ sender: UISwipeGestureRecognizer) {
         selectAndMoveShape(at: sender.view!, to: .Down)
     }
-    
-    @IBAction func startDFSPlayer(_ sender: Any) {
-        let result = dfsPlayer.play()
-        if let result = result {
-            result.printArray()
-        } else {
-            print("nil")
-        }
-    }
-    @IBAction func startBFSPlayer(_ sender: Any) {
-        let result = bfsPlayer.play()
-        if let result = result {
-            result.printArray()
-        } else {
-            print("nil")
-        }
-    }
-    
     
     // MARK: ViewModel
     func selectAndMoveShape(at button: UIView, to direction: Direction) {
@@ -174,7 +147,7 @@ class MainGameViewController: UIViewController {
 
 extension MainGameViewController: SlidingTileBoardDelegate {
     func slidingTileGameOver() {
-        let alertController = UIAlertController(title: "You Won!", message: "congrats! 🎉", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "You Won!", message: "Congrats! 🎉\nYou won in \(tileBoard.moves) moves", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel) { (_) in
             self.dismiss(animated: true, completion: nil)
             return
@@ -187,5 +160,12 @@ extension MainGameViewController: SlidingTileBoardDelegate {
         let both : [Square] = old + new
         let bothSet = Set<Square>(both)
         setColorForSquares(set: bothSet)
+    }
+}
+
+extension MainGameViewController: PlayerDelegate {
+    func switchedCurrentBoard(current: SlidingTileBoard) {
+        self.tileBoard = current
+        setButtonColors()
     }
 }
