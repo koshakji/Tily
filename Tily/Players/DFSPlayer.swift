@@ -8,6 +8,6 @@
 
 import Foundation
 
-class DFSPlayer: Player<Stack<SlidingTileBoard>> {
+class DFSPlayer: SimplePlayer<Stack<SlidingTileBoard>> {
     
 }

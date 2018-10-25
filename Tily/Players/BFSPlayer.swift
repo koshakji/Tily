@@ -8,6 +8,6 @@
 
 import Foundation
 
-class BFSPlayer: Player<Queue<SlidingTileBoard>> {
+class BFSPlayer: SimplePlayer<Queue<SlidingTileBoard>> {
     
 }

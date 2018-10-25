@@ -8,6 +8,6 @@
 
 import Foundation
 
-class UCSPlayer : Player<PriorityQueue<SlidingTileBoard>> {
+class UCSPlayer : SimplePlayer<PriorityQueue<SlidingTileBoard>> {
     
 }

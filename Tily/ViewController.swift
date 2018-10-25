@@ -15,6 +15,9 @@ class MainGameViewController: UIViewController {
     
     var tileBoard : SlidingTileBoard!
     var buttons = [[UIView]]()
+    var player : Player?
+    
+    @IBOutlet weak var playButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,9 @@ class MainGameViewController: UIViewController {
             lineStackView.distribution = .fillEqually
             lineStackView.axis = .horizontal
             mainStackView.addArrangedSubview(lineStackView)
+        }
+        if player == nil {
+            playButton.isEnabled = false
         }
     }
 
@@ -80,6 +86,33 @@ class MainGameViewController: UIViewController {
     
     @objc func selectShapeAndSwipeDown(_ sender: UISwipeGestureRecognizer) {
         selectAndMoveShape(at: sender.view!, to: .Down)
+    }
+    
+    @IBAction func exitTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func setUCSPlayer(_ sender: Any) {
+        player = UCSPlayer(tileBoard: tileBoard, delegate: self)
+        playButton.isEnabled = true
+    }
+    
+    @IBAction func setBFSPlayer(_ sender: Any) {
+        player = BFSPlayer(tileBoard: tileBoard, delegate: self)
+        playButton.isEnabled = true
+    }
+    
+    @IBAction func setDFSPlayer(_ sender: Any) {
+        player = DFSPlayer(tileBoard: tileBoard, delegate: self)
+        playButton.isEnabled = true
+    }
+    
+    @IBAction func playButtonTapped(_ sender: Any) {
+        if let player = player {
+            player.play()
+        } else {
+            playButton.isEnabled = false
+        }
     }
     
     // MARK: ViewModel
@@ -148,10 +181,7 @@ class MainGameViewController: UIViewController {
 extension MainGameViewController: SlidingTileBoardDelegate {
     func slidingTileGameOver() {
         let alertController = UIAlertController(title: "You Won!", message: "Congrats! 🎉\nYou won in \(tileBoard.moves) moves", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .cancel) { (_) in
-            self.dismiss(animated: true, completion: nil)
-            return
-        }
+        let okAction = UIAlertAction(title: "Ok", style: .cancel)
         alertController.addAction(okAction)
         present(alertController, animated: true)
     }
@@ -163,7 +193,7 @@ extension MainGameViewController: SlidingTileBoardDelegate {
     }
 }
 
-extension MainGameViewController: PlayerDelegate {
+extension MainGameViewController: SimplePlayerDelegate {
     func switchedCurrentBoard(current: SlidingTileBoard) {
         self.tileBoard = current
         setButtonColors()

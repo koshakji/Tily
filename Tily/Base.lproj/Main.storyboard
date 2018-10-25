@@ -37,13 +37,33 @@
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="DFS" id="hhH-EG-KTX"/>
-                                    <barButtonItem title="BFS" id="TBE-Nr-IuS"/>
-                                    <barButtonItem title="UCS" id="iin-Mn-Q2j"/>
+                                    <barButtonItem title="DFS" id="hhH-EG-KTX">
+                                        <connections>
+                                            <action selector="setDFSPlayer:" destination="BYZ-38-t0r" id="aPF-sF-mWz"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="BFS" id="TBE-Nr-IuS">
+                                        <connections>
+                                            <action selector="setBFSPlayer:" destination="BYZ-38-t0r" id="ayG-HU-ouu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="UCS" id="iin-Mn-Q2j">
+                                        <connections>
+                                            <action selector="setUCSPlayer:" destination="BYZ-38-t0r" id="McG-Fo-3Jx"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cV9-Ek-4DA"/>
-                                    <barButtonItem systemItem="play" id="aGj-VN-GMz"/>
+                                    <barButtonItem systemItem="play" id="aGj-VN-GMz">
+                                        <connections>
+                                            <action selector="playButtonTapped:" destination="BYZ-38-t0r" id="daw-HX-8hg"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CPr-8k-BhE"/>
-                                    <barButtonItem title="Exit" id="cfr-VM-MUq" userLabel="Exit"/>
+                                    <barButtonItem title="Exit" id="cfr-VM-MUq" userLabel="Exit">
+                                        <connections>
+                                            <action selector="exitTapped:" destination="BYZ-38-t0r" id="Y6v-5I-YwD"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -66,6 +86,7 @@
                     </view>
                     <connections>
                         <outlet property="mainStackView" destination="Vnf-ui-AyO" id="YoT-LX-DyT"/>
+                        <outlet property="playButton" destination="aGj-VN-GMz" id="QDn-By-BrZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
