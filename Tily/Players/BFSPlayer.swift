@@ -8,6 +8,31 @@
 
 import Foundation
 
-class BFSPlayer: SimplePlayer<Queue<SlidingTileBoard>> {
-    
+class BFSPlayer: Player {
+    var visited = Set<SlidingTileBoard>()
+
+    func play(startingWith tileBoard: SlidingTileBoard) -> SlidingTileBoard? {
+        var queue = Queue<SlidingTileBoard>()
+        
+        queue.enqueue(tileBoard)
+        visited.insert(tileBoard)
+        
+        while  !queue.isEmpty {
+            let boardOptional = queue.dequeue()
+            guard let board = boardOptional else { break }
+            
+            
+            if board.gameOver {
+                return board
+            } else {
+                for nextNode in board.allPossibleMoves() {
+                    if !visited.contains(nextNode) {
+                        queue.enqueue(nextNode)
+                        visited.insert(nextNode)
+                    }
+                }
+            }
+        }
+        return nil
+    }
 }

@@ -9,5 +9,7 @@
 import Foundation
 
 protocol Player {
-    func play() -> SlidingTileBoard?
+    //var path: [SlidingTileBoard] { get set }
+    var visited : Set<SlidingTileBoard> { get set }
+    func play(startingWith tileBoard: SlidingTileBoard) -> SlidingTileBoard?
 }
