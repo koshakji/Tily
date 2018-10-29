@@ -31,7 +31,6 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vnf-ui-AyO" secondAttribute="height" multiplier="1:1" id="DN3-Px-N9s"/>
                                 </constraints>
-                                <edgeInsets key="layoutMargins" top="4" left="4" bottom="4" right="4"/>
                             </stackView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqr-1P-mTn">
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
