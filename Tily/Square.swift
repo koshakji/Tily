@@ -30,4 +30,8 @@ struct Square: Codable, Hashable {
     static func ==(lhs: Square, rhs: Square) -> Bool {
         return lhs.row == rhs.row && lhs.column == rhs.column && lhs.shape == rhs.shape
     }
+    
+    static func -(lhs: Square, rhs: Square) -> Int {
+        return abs(lhs.column - rhs.column) + abs(lhs.row - rhs.row)
+    }
 }
