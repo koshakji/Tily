@@ -1,19 +1,39 @@
-//
-//  Stack.swift
-//  Tily
-//
-//  Created by Majd Koshakji on 10/25/18.
-//  Copyright © 2018 Majd Koshakji. All rights reserved.
-//
+/*
+ Last-in first-out stack (LIFO)
+ Push and pop are O(1) operations.
+ */
 
 import Foundation
 
-class Stack <T> : Collection<T> {
-    override func pop() -> T? {
-        return array.removeLast()
+public struct Stack<T> {
+    fileprivate var array = [T]()
+    
+    public var isEmpty: Bool {
+        return array.isEmpty
     }
     
-    override func peek() -> T? {
+    public var count: Int {
+        return array.count
+    }
+    
+    public mutating func push(_ element: T) {
+        array.append(element)
+    }
+    
+    public mutating func pop() -> T? {
+        return array.popLast()
+    }
+    
+    public func peek() -> T? {
         return array.last
+    }
+}
+
+extension Stack: Sequence {
+    public func makeIterator() -> AnyIterator<T> {
+        var curr = self
+        return AnyIterator {
+            return curr.pop()
+        }
     }
 }
