@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16086D312181E4D50002F8E0 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D302181E4D50002F8E0 /* Collection.swift */; };
 		16086D332181E71E0002F8E0 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D322181E71E0002F8E0 /* Stack.swift */; };
 		16086D352181E8720002F8E0 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D342181E8720002F8E0 /* Queue.swift */; };
 		16086D372181E9C40002F8E0 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D362181E9C40002F8E0 /* PriorityQueue.swift */; };
 		16086D392181F3DA0002F8E0 /* UCSPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D382181F3DA0002F8E0 /* UCSPlayer.swift */; };
 		16086D3B218222E80002F8E0 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D3A218222E80002F8E0 /* Player.swift */; };
+		16086D3D218358740002F8E0 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D3C218358740002F8E0 /* Heap.swift */; };
 		16DB098E21762D4F00EF1487 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB098D21762D4F00EF1487 /* AppDelegate.swift */; };
 		16DB099021762D4F00EF1487 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB098F21762D4F00EF1487 /* ViewController.swift */; };
 		16DB099321762D4F00EF1487 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16DB099121762D4F00EF1487 /* Main.storyboard */; };
@@ -25,16 +25,15 @@
 		16DB09B02179184200EF1487 /* defaultGameBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB09AF2179184200EF1487 /* defaultGameBuilder.swift */; };
 		16DB09D2217EF7B600EF1487 /* DFSPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB09D1217EF7B600EF1487 /* DFSPlayer.swift */; };
 		16DB09D4217EFD5A00EF1487 /* BFSPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB09D3217EFD5A00EF1487 /* BFSPlayer.swift */; };
-		16DB09D6217FB6EE00EF1487 /* SimplePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB09D5217FB6EE00EF1487 /* SimplePlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		16086D302181E4D50002F8E0 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		16086D322181E71E0002F8E0 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		16086D342181E8720002F8E0 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		16086D362181E9C40002F8E0 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		16086D382181F3DA0002F8E0 /* UCSPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCSPlayer.swift; sourceTree = "<group>"; };
 		16086D3A218222E80002F8E0 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		16086D3C218358740002F8E0 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
 		16DB098A21762D4F00EF1487 /* Tily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16DB098D21762D4F00EF1487 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16DB098F21762D4F00EF1487 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,7 +48,6 @@
 		16DB09AF2179184200EF1487 /* defaultGameBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultGameBuilder.swift; sourceTree = "<group>"; };
 		16DB09D1217EF7B600EF1487 /* DFSPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFSPlayer.swift; sourceTree = "<group>"; };
 		16DB09D3217EFD5A00EF1487 /* BFSPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BFSPlayer.swift; sourceTree = "<group>"; };
-		16DB09D5217FB6EE00EF1487 /* SimplePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +64,10 @@
 		16086D2F2181E4BB0002F8E0 /* Collections */ = {
 			isa = PBXGroup;
 			children = (
-				16086D302181E4D50002F8E0 /* Collection.swift */,
 				16086D322181E71E0002F8E0 /* Stack.swift */,
 				16086D342181E8720002F8E0 /* Queue.swift */,
 				16086D362181E9C40002F8E0 /* PriorityQueue.swift */,
+				16086D3C218358740002F8E0 /* Heap.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -116,7 +114,6 @@
 				16DB09D1217EF7B600EF1487 /* DFSPlayer.swift */,
 				16DB09D3217EFD5A00EF1487 /* BFSPlayer.swift */,
 				16086D382181F3DA0002F8E0 /* UCSPlayer.swift */,
-				16DB09D5217FB6EE00EF1487 /* SimplePlayer.swift */,
 				16086D3A218222E80002F8E0 /* Player.swift */,
 			);
 			path = Players;
@@ -205,9 +202,8 @@
 				16DB09AA217906DF00EF1487 /* GameChooserTableViewController.swift in Sources */,
 				16DB09D2217EF7B600EF1487 /* DFSPlayer.swift in Sources */,
 				16DB09A621788FE200EF1487 /* SlidingTileBoard.swift in Sources */,
-				16086D312181E4D50002F8E0 /* Collection.swift in Sources */,
+				16086D3D218358740002F8E0 /* Heap.swift in Sources */,
 				16DB099021762D4F00EF1487 /* ViewController.swift in Sources */,
-				16DB09D6217FB6EE00EF1487 /* SimplePlayer.swift in Sources */,
 				16DB098E21762D4F00EF1487 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

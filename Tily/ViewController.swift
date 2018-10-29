@@ -93,25 +93,40 @@ class MainGameViewController: UIViewController {
     }
     
     @IBAction func setUCSPlayer(_ sender: Any) {
-        player = UCSPlayer(tileBoard: tileBoard, delegate: self)
+        player = UCSPlayer()
         playButton.isEnabled = true
     }
     
     @IBAction func setBFSPlayer(_ sender: Any) {
-        player = BFSPlayer(tileBoard: tileBoard, delegate: self)
+        player = BFSPlayer()
         playButton.isEnabled = true
     }
     
     @IBAction func setDFSPlayer(_ sender: Any) {
-        player = DFSPlayer(tileBoard: tileBoard, delegate: self)
+        player = DFSPlayer()
         playButton.isEnabled = true
     }
     
     @IBAction func playButtonTapped(_ sender: Any) {
-        if let player = player {
-            player.play()
-        } else {
+        guard let player = player else {
             playButton.isEnabled = false
+            return
+        }
+        
+        let result = player.play(startingWith: tileBoard)
+        if let result = result {
+            tileBoard = result
+            setButtonColors()
+
+            tileBoard.delegate = self
+            tileBoard.checkGameOver()
+        } else {
+            let alertController = UIAlertController(title: "Computer couldn't win", message: "The chosen algorithm failed to solve the current puzzle 😔", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel)
+            alertController.addAction(okAction)
+            self.player = nil
+            playButton.isEnabled = false
+            present(alertController, animated: true)
         }
     }
     
@@ -190,12 +205,5 @@ extension MainGameViewController: SlidingTileBoardDelegate {
         let both : [Square] = old + new
         let bothSet = Set<Square>(both)
         setColorForSquares(set: bothSet)
-    }
-}
-
-extension MainGameViewController: SimplePlayerDelegate {
-    func switchedCurrentBoard(current: SlidingTileBoard) {
-        self.tileBoard = current
-        setButtonColors()
     }
 }
