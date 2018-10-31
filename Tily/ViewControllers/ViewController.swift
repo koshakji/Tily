@@ -16,8 +16,13 @@ class MainGameViewController: UIViewController {
     var tileBoard : SlidingTileBoard!
     var buttons = [[UIView]]()
     var player : Player?
+    var path : Array<SlidingTileBoard>! = Array<SlidingTileBoard>()
+    var step : Int = 0
     
     @IBOutlet weak var playButton: UIBarButtonItem!
+    @IBOutlet weak var nextMoveButton: UIBarButtonItem!
+    @IBOutlet weak var previousMoveButton: UIBarButtonItem!
+    @IBOutlet weak var playerSelectionButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +50,8 @@ class MainGameViewController: UIViewController {
         if player == nil {
             playButton.isEnabled = false
         }
+        nextMoveButton.isEnabled = false
+        previousMoveButton.isEnabled = false
     }
 
     // MARK: Setup Views
@@ -92,20 +99,6 @@ class MainGameViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func setUCSPlayer(_ sender: Any) {
-        player = UCSPlayer()
-        playButton.isEnabled = true
-    }
-    
-    @IBAction func setBFSPlayer(_ sender: Any) {
-        player = BFSPlayer()
-        playButton.isEnabled = true
-    }
-    
-    @IBAction func setDFSPlayer(_ sender: Any) {
-        player = DFSPlayer()
-        playButton.isEnabled = true
-    }
     
     @IBAction func playButtonTapped(_ sender: Any) {
         guard let player = player else {
@@ -113,13 +106,16 @@ class MainGameViewController: UIViewController {
             return
         }
         
+        path.removeAll()
+        step = 0
+        
         let result = player.play(startingWith: tileBoard)
         if let result = result {
             tileBoard = result
-            setButtonColors()
-
             tileBoard.delegate = self
             tileBoard.checkGameOver()
+            setButtonColors()
+            buildParents(tileBoard)
         } else {
             let alertController = UIAlertController(title: "Computer couldn't win", message: "The chosen algorithm failed to solve the current puzzle 😔", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .cancel)
@@ -130,12 +126,52 @@ class MainGameViewController: UIViewController {
         }
     }
     
+    @IBAction func previousButtonTapped(_ sender: Any) {
+        step -= 1
+        if step < 0 {
+            step = path.count - 1
+        }
+        getStepState()
+    }
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        step += 1
+        if step >= path.count {
+            step = 0
+        }
+        getStepState()
+    }
+    
+    
     // MARK: ViewModel
     func selectAndMoveShape(at button: UIView, to direction: Direction) {
         let location = getIandJ(from: button.tag)
         let shapeNumber = tileBoard.array[location.i][location.j].shape
         guard let shape = shapeNumber else { return }
         tileBoard.move(shape: shape, direction)
+    }
+    
+    func buildParents(_ starting: SlidingTileBoard) {
+        path.append(starting)
+        var boardOptional : SlidingTileBoard? = starting
+        while boardOptional != nil {
+            guard let board = boardOptional else { break }
+            path.append(board)
+            boardOptional = board.parent
+        }
+        path.reverse()
+        
+        if path.count > 0 {
+            nextMoveButton.isEnabled = true
+            previousMoveButton.isEnabled = true
+            step = path.count - 1
+        }
+    }
+    
+    func getStepState() {
+        guard step < path.count && step >= 0 else { return }
+        tileBoard = path[step]
+        tileBoard.delegate = self
+        setButtonColors()
     }
     
     // MARK: Helper Functions
@@ -165,6 +201,16 @@ class MainGameViewController: UIViewController {
             let column = square.column
             setColorFor(button: buttons[row][column], i: row, j: column)
         }
+    }
+    
+
+    
+    // MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard  segue.identifier == "selectPlayerSegue" else { return }
+        let vc = segue.destination as! PlayerSelectionTableViewController
+        vc.delegate = self
+        vc.player = self.player
     }
     
     // MARK: Defining Colors
@@ -205,5 +251,17 @@ extension MainGameViewController: SlidingTileBoardDelegate {
         let both : [Square] = old + new
         let bothSet = Set<Square>(both)
         setColorForSquares(set: bothSet)
+    }
+}
+
+extension MainGameViewController : PlayerSelectionDelegate {
+    func didSelect(_ player: Player?) {
+        if let player = player {
+            self.player = player
+            playerSelectionButton.title = self.player?.stringValue
+            playButton.isEnabled = true
+        } else {
+            playButton.isEnabled = false
+        }
     }
 }
