@@ -10,29 +10,37 @@ import Foundation
 
 class BFSPlayer: Player {
     var visited = Set<SlidingTileBoard>()
+    var stringValue : String { get { return "BFS" } }
 
     func play(startingWith tileBoard: SlidingTileBoard) -> SlidingTileBoard? {
         var queue = Queue<SlidingTileBoard>()
         
         queue.enqueue(tileBoard)
-        visited.insert(tileBoard)
         
         while  !queue.isEmpty {
             let boardOptional = queue.dequeue()
             guard let board = boardOptional else { break }
             
+            if visited.contains(board) {
+                continue
+            } else {
+                visited.insert(board)
+            }
+            
             
             if board.gameOver {
+                visited.removeAll()
                 return board
-            } else {
-                for nextNode in board.allPossibleMoves() {
-                    if !visited.contains(nextNode) {
-                        queue.enqueue(nextNode)
-                        visited.insert(nextNode)
-                    }
+            }
+            for nextNode in board.allPossibleMoves() {
+                if !visited.contains(nextNode) {
+                    queue.enqueue(nextNode)
+                    nextNode.parent = board
                 }
             }
         }
+        visited.removeAll()
         return nil
     }
+    
 }

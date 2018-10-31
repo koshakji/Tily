@@ -10,6 +10,8 @@ import Foundation
 
 class UCSPlayer : Player {
     var visited = Set<SlidingTileBoard>()
+    var stringValue : String { get { return "UCS" } }
+
     
     func play(startingWith tileBoard: SlidingTileBoard) -> SlidingTileBoard? {
         var priorityQ = PriorityQueue<SlidingTileBoard> {
@@ -18,24 +20,30 @@ class UCSPlayer : Player {
         
         priorityQ.enqueue(tileBoard)
         
-        visited.insert(tileBoard)
         while  !priorityQ.isEmpty {
             let boardOptional = priorityQ.dequeue()
             guard let board = boardOptional else { break }
-
-            if board.gameOver {
-                return board
+            
+            if visited.contains(board) {
+                continue
             } else {
-                for nextNode in board.allPossibleMoves() {
-                    if !visited.contains(nextNode) {
-                        priorityQ.enqueue(nextNode)
-                        visited.insert(nextNode)
-                    }
+                visited.insert(board)
+            }
+            
+            
+            if board.gameOver {
+                visited.removeAll()
+                return board
+            }
+            for nextNode in board.allPossibleMoves() {
+                if !visited.contains(nextNode) {
+                    priorityQ.enqueue(nextNode)
+                    nextNode.parent = board
                 }
             }
         }
+        visited.removeAll()
         return nil
     }
-    
     
 }
