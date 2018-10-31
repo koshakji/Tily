@@ -25,6 +25,9 @@ class SlidingTileBoard: Codable {
     var shapes = [Int: [Square]]()
     var moves : Int
     
+    //for saving path
+    var parent : SlidingTileBoard? = nil
+    
     var delegate : SlidingTileBoardDelegate?
     
     var gameOver : Bool { get {
@@ -39,6 +42,8 @@ class SlidingTileBoard: Codable {
     }
     
     var lastSquare : Square { get { return array[height - 1][width - 1] }}
+    
+    var mainManhattanDistance: Int { get { return shapeManhattanDistance(to: lastSquare)! } }
     
     init(name: String = "game", width: Int = 4, height: Int = 4, delegate: SlidingTileBoardDelegate? = nil) {
         self.name = name
@@ -148,11 +153,7 @@ class SlidingTileBoard: Codable {
         let distances = shape.map { $0 - square }
         return distances.min()
     }
-    
-    func shapeManhattanDistanceToLastSquare(shape shapeNumber: Int = 0) -> Int? {
-        return shapeManhattanDistance(shape: shapeNumber, to: lastSquare)
-    }
-    
+
     func printArray() {
         var string = ""
         for i in 0 ..< height {
