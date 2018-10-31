@@ -32,29 +32,32 @@
                                     <constraint firstAttribute="width" secondItem="Vnf-ui-AyO" secondAttribute="height" multiplier="1:1" id="DN3-Px-N9s"/>
                                 </constraints>
                             </stackView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqr-1P-mTn">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqr-1P-mTn">
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="DFS" id="hhH-EG-KTX">
+                                    <barButtonItem title="Select" id="hhH-EG-KTX">
                                         <connections>
-                                            <action selector="setDFSPlayer:" destination="BYZ-38-t0r" id="aPF-sF-mWz"/>
+                                            <segue destination="yc2-hX-aW0" kind="popoverPresentation" identifier="selectPlayerSegue" popoverAnchorBarButtonItem="hhH-EG-KTX" id="TUw-zX-iSV">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES"/>
+                                            </segue>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="BFS" id="TBE-Nr-IuS">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Uyn-oI-xaS"/>
+                                    <barButtonItem systemItem="rewind" id="nmg-kF-ZXf">
                                         <connections>
-                                            <action selector="setBFSPlayer:" destination="BYZ-38-t0r" id="ayG-HU-ouu"/>
+                                            <action selector="previousButtonTapped:" destination="BYZ-38-t0r" id="0oR-a0-U1g"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="UCS" id="iin-Mn-Q2j">
-                                        <connections>
-                                            <action selector="setUCSPlayer:" destination="BYZ-38-t0r" id="McG-Fo-3Jx"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="cV9-Ek-4DA"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="gJ8-Q3-2Bd"/>
                                     <barButtonItem systemItem="play" id="aGj-VN-GMz">
                                         <connections>
                                             <action selector="playButtonTapped:" destination="BYZ-38-t0r" id="daw-HX-8hg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="bpo-Uc-RFK"/>
+                                    <barButtonItem systemItem="fastForward" id="Loc-fl-gkZ">
+                                        <connections>
+                                            <action selector="nextButtonTapped:" destination="BYZ-38-t0r" id="lNB-Ng-6wY"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CPr-8k-BhE"/>
@@ -71,26 +74,75 @@
                             <constraint firstItem="s0s-D7-gVE" firstAttribute="centerY" secondItem="Vnf-ui-AyO" secondAttribute="centerY" id="6Zf-xf-5j1"/>
                             <constraint firstItem="s0s-D7-gVE" firstAttribute="height" secondItem="Vnf-ui-AyO" secondAttribute="height" id="ALD-0P-Mnk"/>
                             <constraint firstItem="s0s-D7-gVE" firstAttribute="centerX" secondItem="Vnf-ui-AyO" secondAttribute="centerX" id="BzO-yU-FRg"/>
+                            <constraint firstItem="eqr-1P-mTn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="DAv-K7-orN"/>
                             <constraint firstItem="Vnf-ui-AyO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Dxi-pM-Awz"/>
                             <constraint firstItem="S32-gG-E9k" firstAttribute="bottom" secondItem="s0s-D7-gVE" secondAttribute="bottom" constant="4" id="EaV-Qj-kMe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eqr-1P-mTn" secondAttribute="trailing" id="FNu-lr-ziD"/>
                             <constraint firstItem="s0s-D7-gVE" firstAttribute="width" secondItem="Vnf-ui-AyO" secondAttribute="width" id="UGr-Du-wIX"/>
                             <constraint firstItem="S32-gG-E9k" firstAttribute="leading" secondItem="s0s-D7-gVE" secondAttribute="leading" constant="-4" id="b7I-rP-jVa"/>
+                            <constraint firstItem="eqr-1P-mTn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bVz-TX-Xwa"/>
                             <constraint firstItem="Vnf-ui-AyO" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="eiT-Ip-FBw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vnf-ui-AyO" secondAttribute="trailing" constant="20" id="fdn-tq-GPC"/>
                             <constraint firstItem="S32-gG-E9k" firstAttribute="trailing" secondItem="s0s-D7-gVE" secondAttribute="trailing" constant="4" id="lO4-e8-ZvT"/>
                             <constraint firstItem="Vnf-ui-AyO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="r0m-VH-ALH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eqr-1P-mTn" secondAttribute="bottom" id="v5M-Yb-BrL"/>
                             <constraint firstItem="S32-gG-E9k" firstAttribute="top" secondItem="s0s-D7-gVE" secondAttribute="top" constant="-4" id="ygn-Ds-GMe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="mainStackView" destination="Vnf-ui-AyO" id="YoT-LX-DyT"/>
+                        <outlet property="nextMoveButton" destination="Loc-fl-gkZ" id="TYW-BG-UGD"/>
                         <outlet property="playButton" destination="aGj-VN-GMz" id="QDn-By-BrZ"/>
+                        <outlet property="playerSelectionButton" destination="hhH-EG-KTX" id="GjH-FV-SKo"/>
+                        <outlet property="previousMoveButton" destination="nmg-kF-ZXf" id="V3k-SO-gLe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.5" y="132.421875"/>
+        </scene>
+        <!--Algorithm-->
+        <scene sceneID="BP0-8i-PA7">
+            <objects>
+                <tableViewController id="yc2-hX-aW0" customClass="PlayerSelectionTableViewController" customModule="Tily" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DP8-aE-QHo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerCell" textLabel="Ie2-Wq-W1b" style="IBUITableViewCellStyleDefault" id="kvK-ia-yed">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kvK-ia-yed" id="c1l-Rv-G6p">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="DFS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ie2-Wq-W1b">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="yc2-hX-aW0" id="x1E-fD-oA2"/>
+                            <outlet property="delegate" destination="yc2-hX-aW0" id="4eN-F1-nVL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Algorithm" largeTitleDisplayMode="always" id="5Jp-o0-R1z">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="Jza-Ch-vj7"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="olB-Py-Vgu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="931" y="136"/>
         </scene>
         <!--Game Size-->
         <scene sceneID="3rz-3j-uJF">
