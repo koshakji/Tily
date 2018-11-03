@@ -31,13 +31,10 @@ class SlidingTileBoard: Codable {
     var delegate : SlidingTileBoardDelegate?
     
     var gameOver : Bool { get {
-        if let squares = shapes[0] {
-            let endSquares = squares.filter {
-                $0.row == height - 1 && $0.column == width - 1
-            }
-            return endSquares.count > 0
-        }
-        return false
+        guard let squares = shapes[0] else { return false }
+        let columns = squares.map { $0.column }.sorted()
+        let rows = squares.map { $0.row }.sorted()
+        return rows.last! == height - 1 && columns.last! == width - 1
         }
     }
     
