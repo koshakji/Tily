@@ -15,10 +15,10 @@ class BFSPlayer: Player {
     func play(startingWith tileBoard: SlidingTileBoard) -> SlidingTileBoard? {
         var queue = Queue<SlidingTileBoard>()
         
-        queue.enqueue(tileBoard)
+        queue.push(tileBoard)
         
         while  !queue.isEmpty {
-            let boardOptional = queue.dequeue()
+            let boardOptional = queue.pop()
             guard let board = boardOptional else { break }
             
             if visited.contains(board) {
@@ -34,7 +34,7 @@ class BFSPlayer: Player {
             }
             for nextNode in board.allPossibleMoves() {
                 if !visited.contains(nextNode) {
-                    queue.enqueue(nextNode)
+                    queue.push(nextNode)
                     nextNode.parent = board
                 }
             }

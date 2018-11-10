@@ -18,10 +18,10 @@ class UCSPlayer : Player {
             $0.moves < $1.moves
         }
         
-        priorityQ.enqueue(tileBoard)
+        priorityQ.push(tileBoard)
         
         while  !priorityQ.isEmpty {
-            let boardOptional = priorityQ.dequeue()
+            let boardOptional = priorityQ.pop()
             guard let board = boardOptional else { break }
             
             if visited.contains(board) {
@@ -37,7 +37,7 @@ class UCSPlayer : Player {
             }
             for nextNode in board.allPossibleMoves() {
                 if !visited.contains(nextNode) {
-                    priorityQ.enqueue(nextNode)
+                    priorityQ.push(nextNode)
                     nextNode.parent = board
                 }
             }

@@ -17,10 +17,10 @@ class AStarPlayer: Player {
             ($0.moves + $0.mainManhattanDistance) < ($1.moves + $1.mainManhattanDistance)
         }
         
-        priorityQ.enqueue(tileBoard)
+        priorityQ.push(tileBoard)
         
         while  !priorityQ.isEmpty {
-            let boardOptional = priorityQ.dequeue()
+            let boardOptional = priorityQ.pop()
             guard let board = boardOptional else { break }
 
             if visited.contains(board) {
@@ -36,7 +36,7 @@ class AStarPlayer: Player {
             } else {
                 for nextNode in board.allPossibleMoves() {
                     if !visited.contains(nextNode) {
-                        priorityQ.enqueue(nextNode)
+                        priorityQ.push(nextNode)
                         nextNode.parent = board
                     }
                 }
