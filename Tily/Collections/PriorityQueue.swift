@@ -37,11 +37,11 @@ public struct PriorityQueue<T> {
         return heap.peek()
     }
     
-    public mutating func enqueue(_ element: T) {
+    public mutating func push(_ element: T) {
         heap.insert(element)
     }
     
-    public mutating func dequeue() -> T? {
+    public mutating func pop() -> T? {
         return heap.remove()
     }
     
