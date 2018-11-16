@@ -16,6 +16,8 @@
 		16086D4121883BB10002F8E0 /* AStarPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D4021883BB10002F8E0 /* AStarPlayer.swift */; };
 		16086D43218A111C0002F8E0 /* PlayerSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D42218A111C0002F8E0 /* PlayerSelectionTableViewController.swift */; };
 		16086D47218A13D10002F8E0 /* HillClimbingPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D46218A13D10002F8E0 /* HillClimbingPlayer.swift */; };
+		16CF30562190E83700CDEE04 /* GeneralPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF30552190E83700CDEE04 /* GeneralPlayer.swift */; };
+		16CF30582190E8D200CDEE04 /* AdvancedCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF30572190E8D200CDEE04 /* AdvancedCollection.swift */; };
 		16DB098E21762D4F00EF1487 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB098D21762D4F00EF1487 /* AppDelegate.swift */; };
 		16DB099021762D4F00EF1487 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DB098F21762D4F00EF1487 /* ViewController.swift */; };
 		16DB099321762D4F00EF1487 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16DB099121762D4F00EF1487 /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 		16086D4021883BB10002F8E0 /* AStarPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarPlayer.swift; sourceTree = "<group>"; };
 		16086D42218A111C0002F8E0 /* PlayerSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSelectionTableViewController.swift; sourceTree = "<group>"; };
 		16086D46218A13D10002F8E0 /* HillClimbingPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HillClimbingPlayer.swift; sourceTree = "<group>"; };
+		16CF30552190E83700CDEE04 /* GeneralPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPlayer.swift; sourceTree = "<group>"; };
+		16CF30572190E8D200CDEE04 /* AdvancedCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCollection.swift; sourceTree = "<group>"; };
 		16DB098A21762D4F00EF1487 /* Tily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16DB098D21762D4F00EF1487 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16DB098F21762D4F00EF1487 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +101,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		16BBCAE321976B57007C529E /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				16CF30572190E8D200CDEE04 /* AdvancedCollection.swift */,
+				16CF30552190E83700CDEE04 /* GeneralPlayer.swift */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
 		16DB098121762D4F00EF1487 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +129,7 @@
 		16DB098C21762D4F00EF1487 /* Tily */ = {
 			isa = PBXGroup;
 			children = (
+				16BBCAE321976B57007C529E /* Beta */,
 				16086D2F2181E4BB0002F8E0 /* Collections */,
 				16DB09D0217EF76A00EF1487 /* Players */,
 				16086D45218A11710002F8E0 /* Model */,
@@ -220,8 +234,10 @@
 				16086D43218A111C0002F8E0 /* PlayerSelectionTableViewController.swift in Sources */,
 				16DB09B02179184200EF1487 /* defaultGameBuilder.swift in Sources */,
 				16086D47218A13D10002F8E0 /* HillClimbingPlayer.swift in Sources */,
+				16CF30582190E8D200CDEE04 /* AdvancedCollection.swift in Sources */,
 				16DB09AE21790B5C00EF1487 /* TileBoardFIleManager.swift in Sources */,
 				16086D4121883BB10002F8E0 /* AStarPlayer.swift in Sources */,
+				16CF30562190E83700CDEE04 /* GeneralPlayer.swift in Sources */,
 				16086D3B218222E80002F8E0 /* Player.swift in Sources */,
 				16DB09D4217EFD5A00EF1487 /* BFSPlayer.swift in Sources */,
 				16086D352181E8720002F8E0 /* Queue.swift in Sources */,
