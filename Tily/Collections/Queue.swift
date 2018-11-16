@@ -9,7 +9,7 @@
 
 import Foundation
 
-public struct Queue<T> {
+public class Queue<T> {
     fileprivate var array = [T?]()
     fileprivate var head = 0
     
@@ -21,11 +21,11 @@ public struct Queue<T> {
         return array.count - head
     }
     
-    public mutating func push(_ element: T) {
+    public func push(_ element: T) {
         array.append(element)
     }
     
-    public mutating func pop() -> T? {
+    public func pop() -> T? {
         guard head < array.count, let element = array[head] else { return nil }
         
         array[head] = nil

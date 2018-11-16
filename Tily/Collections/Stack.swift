@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct Stack<T> {
+public class Stack<T> {
     fileprivate var array = [T]()
     
     public var isEmpty: Bool {
@@ -16,11 +16,11 @@ public struct Stack<T> {
         return array.count
     }
     
-    public mutating func push(_ element: T) {
+    public func push(_ element: T) {
         array.append(element)
     }
     
-    public mutating func pop() -> T? {
+    public func pop() -> T? {
         return array.popLast()
     }
     
@@ -31,9 +31,8 @@ public struct Stack<T> {
 
 extension Stack: Sequence {
     public func makeIterator() -> AnyIterator<T> {
-        var curr = self
         return AnyIterator {
-            return curr.pop()
+            return self.pop()
         }
     }
 }

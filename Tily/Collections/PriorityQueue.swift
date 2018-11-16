@@ -13,7 +13,7 @@
 
 import Foundation
 
-public struct PriorityQueue<T> {
+public class PriorityQueue<T> {
     
     fileprivate var heap: Heap<T>
     
@@ -37,11 +37,11 @@ public struct PriorityQueue<T> {
         return heap.peek()
     }
     
-    public mutating func push(_ element: T) {
+    public func push(_ element: T) {
         heap.insert(element)
     }
     
-    public mutating func pop() -> T? {
+    public func pop() -> T? {
         return heap.remove()
     }
     
@@ -50,7 +50,7 @@ public struct PriorityQueue<T> {
      the new priority should be larger than the old one; in a min-priority queue
      it should be smaller.
      */
-    public mutating func changePriority(index i: Int, value: T) {
+    public func changePriority(index i: Int, value: T) {
         return heap.replace(index: i, value: value)
     }
 }
