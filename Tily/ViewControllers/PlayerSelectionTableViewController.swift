@@ -14,7 +14,7 @@ protocol PlayerSelectionDelegate {
 
 class PlayerSelectionTableViewController: UITableViewController {
     
-    let players: [Player] = [DFSPlayer(), BFSPlayer(), UCSPlayer(), HillClimbingPlayer(), AStarPlayer()]
+    let players: [Player] = [otherDFSPlayer(), otherBFSPlayer(), otherUCSPlayer(), otherHillClimbingPlayer(), otherAStarPlayer()]
     var player : Player?
     var delegate : PlayerSelectionDelegate?
     
