@@ -8,9 +8,45 @@
 
 import Foundation
 
-protocol Player {
-    //var path: [SlidingTileBoard] { get set }
+protocol Player: CustomStringConvertible {
+    mutating func play(startingWith tileBoard: SlidingTileBoard) -> SlidingTileBoard?
+}
+
+protocol StateSpaceSearchPlayer: Player {
+    associatedtype CollectionType: AdvancedCollection where CollectionType.Element == SlidingTileBoard
+
+    var collection : CollectionType { get set }
     var visited : Set<SlidingTileBoard> { get set }
-    var stringValue : String { get }
-    func play(startingWith tileBoard: SlidingTileBoard) -> SlidingTileBoard?
+}
+
+extension StateSpaceSearchPlayer {
+    mutating func play(startingWith tileBoard: SlidingTileBoard) -> SlidingTileBoard? {
+        
+        collection.push(tileBoard)
+        
+        while  !collection.isEmpty {
+            let boardOptional = collection.pop()
+            guard let board = boardOptional else { break }
+            
+            if visited.contains(board) {
+                continue
+            } else {
+                visited.insert(board)
+            }
+            
+            if board.isFinalState {
+                visited.removeAll()
+                return board
+            } else {
+                for nextNode in board.allPossibleNextStates() {
+                    if !visited.contains(nextNode) {
+                        collection.push(nextNode)
+                        nextNode.parent = board
+                    }
+                }
+            }
+        }
+        visited.removeAll()
+        return nil
+    }
 }
