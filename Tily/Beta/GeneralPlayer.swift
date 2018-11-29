@@ -33,11 +33,11 @@ class GeneralPlayer<T: SlidingTileCollection>: Player {
             }
 
 
-            if board.gameOver {
+            if board.isFinalState {
                 visited.removeAll()
                 return board
             } else {
-                for nextNode in board.allPossibleMoves() {
+                for nextNode in board.allPossibleNextStates() {
                     if !visited.contains(nextNode) {
                         collection.push(nextNode)
                         nextNode.parent = board

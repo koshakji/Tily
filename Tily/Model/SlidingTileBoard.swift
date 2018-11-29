@@ -30,7 +30,7 @@ class SlidingTileBoard: Codable {
     
     var delegate : SlidingTileBoardDelegate?
     
-    var gameOver : Bool { get {
+    var isFinalState : Bool { get {
         guard let squares = shapes[0] else { return false }
         let columns = squares.map { $0.column }.sorted()
         let rows = squares.map { $0.row }.sorted()
@@ -92,7 +92,7 @@ class SlidingTileBoard: Codable {
     }
     
     func checkGameOver() {
-        if gameOver {
+        if isFinalState {
             delegate?.slidingTileGameOver()
         }
     }
@@ -132,7 +132,7 @@ class SlidingTileBoard: Codable {
         
     }
     
-    func allPossibleMoves() -> Array<SlidingTileBoard> {
+    func allPossibleNextStates() -> Array<SlidingTileBoard> {
         let allDirections = Direction.allCases
         var result = Array<SlidingTileBoard>()
         for (shape, _) in shapes {
