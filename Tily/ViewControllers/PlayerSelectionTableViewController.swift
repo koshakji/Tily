@@ -14,7 +14,7 @@ protocol PlayerSelectionDelegate {
 
 class PlayerSelectionTableViewController: UITableViewController {
     
-    let players: [Player] = [otherDFSPlayer(), otherBFSPlayer(), otherUCSPlayer(), otherHillClimbingPlayer(), otherAStarPlayer()]
+    let players: [Player] = [DFSPlayer(), BFSPlayer(), UCSPlayer(), HillClimbingPlayer(), AStarPlayer()]
     var player : Player?
     var delegate : PlayerSelectionDelegate?
     
@@ -33,10 +33,10 @@ class PlayerSelectionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath)
         let playa = players[indexPath.row]
-        cell.textLabel?.text = playa.stringValue
+        cell.textLabel?.text = playa.description
         
         if let player = self.player {
-            if playa.stringValue == player.stringValue {
+            if playa.description == player.description {
                 cell.accessoryType = .checkmark
             } else {
                 cell.accessoryType = .none

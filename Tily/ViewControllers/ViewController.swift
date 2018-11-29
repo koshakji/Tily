@@ -101,7 +101,7 @@ class MainGameViewController: UIViewController {
     
     
     @IBAction func playButtonTapped(_ sender: Any) {
-        guard let player = player else {
+        guard var player = player else {
             playButton.isEnabled = false
             return
         }
@@ -258,7 +258,7 @@ extension MainGameViewController : PlayerSelectionDelegate {
     func didSelect(_ player: Player?) {
         if let player = player {
             self.player = player
-            playerSelectionButton.title = self.player?.stringValue
+            playerSelectionButton.title = self.player?.description
             playButton.isEnabled = true
         } else {
             playButton.isEnabled = false
