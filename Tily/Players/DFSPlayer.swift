@@ -8,34 +8,10 @@
 
 import Foundation
 
-class DFSPlayer: Player {
+class DFSPlayer: StateSpaceSearchPlayer {
+    typealias CollectionType = Stack<SlidingTileBoard>
     var visited = Set<SlidingTileBoard>()
-    var stringValue : String { get { return "DFS" } }
-
+    var collection = Stack<SlidingTileBoard>()
     
-    func play(startingWith tileBoard: SlidingTileBoard) -> SlidingTileBoard? {
-        var stack = Stack<SlidingTileBoard>()
-        
-        stack.push(tileBoard)
-        visited.insert(tileBoard)
-        while  !stack.isEmpty {
-            let boardOptional = stack.pop()
-            guard let board = boardOptional else { break }
-            
-            if board.isFinalState {
-                visited.removeAll()
-                return board
-            } else {
-                for nextNode in board.allPossibleNextStates() {
-                    if !visited.contains(nextNode) {
-                        stack.push(nextNode)
-                        visited.insert(nextNode)
-                        nextNode.parent = board
-                    }
-                }
-            }
-        }
-        visited.removeAll()
-        return nil
-    }
+    var description: String { get { return "DFS" }}
 }

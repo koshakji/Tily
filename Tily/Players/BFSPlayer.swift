@@ -8,39 +8,10 @@
 
 import Foundation
 
-class BFSPlayer: Player {
+class BFSPlayer: StateSpaceSearchPlayer {
+    typealias CollectionType = Queue<SlidingTileBoard>
     var visited = Set<SlidingTileBoard>()
-    var stringValue : String { get { return "BFS" } }
-
-    func play(startingWith tileBoard: SlidingTileBoard) -> SlidingTileBoard? {
-        var queue = Queue<SlidingTileBoard>()
-        
-        queue.push(tileBoard)
-        
-        while  !queue.isEmpty {
-            let boardOptional = queue.pop()
-            guard let board = boardOptional else { break }
-            
-            if visited.contains(board) {
-                continue
-            } else {
-                visited.insert(board)
-            }
-            
-            
-            if board.isFinalState {
-                visited.removeAll()
-                return board
-            }
-            for nextNode in board.allPossibleNextStates() {
-                if !visited.contains(nextNode) {
-                    queue.push(nextNode)
-                    nextNode.parent = board
-                }
-            }
-        }
-        visited.removeAll()
-        return nil
-    }
+    var collection = Queue<SlidingTileBoard>()
     
+    var description: String { get { return "BFS" }}
 }
