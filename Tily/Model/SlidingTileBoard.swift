@@ -17,7 +17,7 @@ protocol SlidingTileBoardDelegate {
     func squaresMoved(old: [Square], new: [Square])
 }
 
-class SlidingTileBoard: Codable {
+final class SlidingTileBoard: Codable, StateSpaceSearchable {
     let name: String
     let width : Int
     let height : Int
