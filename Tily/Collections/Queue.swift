@@ -9,7 +9,7 @@
 
 import Foundation
 
-public class Queue<T> {
+public class Queue<T>: AdvancedCollection {
     fileprivate var array = [T?]()
     fileprivate var head = 0
     

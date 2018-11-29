@@ -13,7 +13,7 @@
 
 import Foundation
 
-public class PriorityQueue<T> {
+public class PriorityQueue<T>: AdvancedCollection {
     
     fileprivate var heap: Heap<T>
     

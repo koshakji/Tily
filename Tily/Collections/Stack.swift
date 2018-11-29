@@ -5,7 +5,7 @@
 
 import Foundation
 
-public class Stack<T> {
+public class Stack<T>: AdvancedCollection {
     fileprivate var array = [T]()
     
     public var isEmpty: Bool {
