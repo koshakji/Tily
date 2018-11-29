@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol StateSpace {
+protocol StateSpaceSearchable {
     var isFinalState : Bool { get }
     func allPossibleNextStates() -> [Self]
 }
