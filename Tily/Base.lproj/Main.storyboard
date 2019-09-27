@@ -13,26 +13,26 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainGameViewController" customModule="Tily" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S32-gG-E9k" userLabel="Border View">
-                                <rect key="frame" x="16" y="167" width="382" height="382"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="177" width="382" height="382"/>
+                                <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0s-D7-gVE" userLabel="White Background View">
-                                <rect key="frame" x="20" y="171" width="374" height="374"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="20" y="181" width="374" height="374"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vnf-ui-AyO">
-                                <rect key="frame" x="20" y="171" width="374" height="374"/>
+                                <rect key="frame" x="20" y="181" width="374" height="374"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vnf-ui-AyO" secondAttribute="height" multiplier="1:1" id="DN3-Px-N9s"/>
                                 </constraints>
                             </stackView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqr-1P-mTn">
-                                <rect key="frame" x="0.0" y="672" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <items>
                                     <barButtonItem title="Select" id="hhH-EG-KTX">
                                         <connections>
@@ -68,7 +68,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="s0s-D7-gVE" firstAttribute="centerY" secondItem="Vnf-ui-AyO" secondAttribute="centerY" id="6Zf-xf-5j1"/>
                             <constraint firstItem="s0s-D7-gVE" firstAttribute="height" secondItem="Vnf-ui-AyO" secondAttribute="height" id="ALD-0P-Mnk"/>
@@ -177,7 +177,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loadGameSegue" id="TEG-6e-H0B"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loadGameSegue" modalPresentationStyle="fullScreen" id="TEG-6e-H0B"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
