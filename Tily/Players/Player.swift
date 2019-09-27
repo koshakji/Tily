@@ -13,21 +13,22 @@ protocol Player: CustomStringConvertible {
 }
 
 protocol StateSpaceSearchPlayer: Player {
-    associatedtype CollectionType: AdvancedCollection where CollectionType.Element == SlidingTileBoard
+    associatedtype gameType: StateSpaceSearchable, Hashable
+    associatedtype CollectionType: AdvancedCollection where CollectionType.Element == gameType
+    
 
     var collection : CollectionType { get set }
-    var visited : Set<SlidingTileBoard> { get set }
+    var visited : Set<gameType> { get set }
 }
 
 extension StateSpaceSearchPlayer {
-    mutating func play(startingWith tileBoard: SlidingTileBoard) -> SlidingTileBoard? {
+    mutating func play(startingWith game: gameType) -> gameType? {
         
-        collection.push(tileBoard)
+        collection.push(game)
         var countIn = 0, countOut = 0;
         
         while  !collection.isEmpty {
-            let boardOptional = collection.pop()
-            guard let board = boardOptional else { break }
+            guard let board = collection.pop() else { break }
             countOut += 1
             if visited.contains(board) {
                 continue
@@ -37,11 +38,9 @@ extension StateSpaceSearchPlayer {
             
             if board.isFinalState {
                 visited.removeAll()
-                print(countIn)
-                print(countOut)
                 return board
             } else {
-                for nextNode in board.allPossibleNextStates() {
+                for var nextNode in board.allPossibleNextStates() {
                     if !visited.contains(nextNode) {
                         countIn += 1
                         collection.push(nextNode)
