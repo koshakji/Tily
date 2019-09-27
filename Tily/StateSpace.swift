@@ -11,4 +11,5 @@ import Foundation
 protocol StateSpaceSearchable {
     var isFinalState : Bool { get }
     func allPossibleNextStates() -> [Self]
+    var parent: Self? { get set }
 }
