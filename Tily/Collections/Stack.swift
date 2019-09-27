@@ -29,10 +29,10 @@ public class Stack<T>: AdvancedCollection {
     }
 }
 
-extension Stack: Sequence {
-    public func makeIterator() -> AnyIterator<T> {
-        return AnyIterator {
-            return self.pop()
-        }
-    }
-}
+//extension Stack: Sequence {
+//    public func makeIterator() -> AnyIterator<T> {
+//        return AnyIterator {
+//            return self.pop()
+//        }
+//    }
+//}
