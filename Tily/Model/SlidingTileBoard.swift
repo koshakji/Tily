@@ -40,8 +40,6 @@ final class SlidingTileBoard: Codable, StateSpaceSearchable {
     
     var lastSquare : Square { get { return array[height - 1][width - 1] }}
     
-    var mainManhattanDistance: Int { get { return shapeManhattanDistance(to: lastSquare)! } }
-    
     init(name: String = "game", width: Int = 4, height: Int = 4, delegate: SlidingTileBoardDelegate? = nil) {
         self.name = name
         self.width = width
@@ -149,6 +147,10 @@ final class SlidingTileBoard: Codable, StateSpaceSearchable {
         guard let shape = shapes[shapeNumber] else { return nil }
         let distances = shape.map { $0 - square }
         return distances.min()
+    }
+    
+    func calculateMainManhattenDistance() -> Int {
+        shapeManhattanDistance(to: lastSquare) ?? Int.max
     }
 
     func printArray() {

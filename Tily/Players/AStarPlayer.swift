@@ -10,6 +10,6 @@ import Foundation
 
 struct AStarPlayer: StateSpaceSearchPlayer {
     var visited = Set<SlidingTileBoard>()
-    var collection = PriorityQueue<SlidingTileBoard>(sort: { ($0.moves + $0.mainManhattanDistance) < ($1.moves + $1.mainManhattanDistance) })
+    var collection = PriorityQueue<SlidingTileBoard>(sort: { ($0.moves + $0.calculateMainManhattenDistance()) < ($1.moves + $1.calculateMainManhattenDistance()) })
     var description: String { get { return "AStar" }}
 }
