@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DefaultGameBuilder {
+struct DefaultGameBuilder {
     let games: [SlidingTileBoard]
     
     init() {

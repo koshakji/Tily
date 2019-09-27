@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TileBoardFileManager {
+struct TileBoardFileManager {
     var documentDirectory: URL { get {
             return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         }
