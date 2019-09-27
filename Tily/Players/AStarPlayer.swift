@@ -8,8 +8,7 @@
 
 import Foundation
 
-class AStarPlayer: StateSpaceSearchPlayer {
-    typealias CollectionType = PriorityQueue<SlidingTileBoard>
+struct AStarPlayer: StateSpaceSearchPlayer {
     var visited = Set<SlidingTileBoard>()
     var collection = PriorityQueue<SlidingTileBoard>(sort: { ($0.moves + $0.mainManhattanDistance) < ($1.moves + $1.mainManhattanDistance) })
     var description: String { get { return "AStar" }}

@@ -8,8 +8,7 @@
 
 import Foundation
 
-class DFSPlayer: StateSpaceSearchPlayer {
-    typealias CollectionType = Stack<SlidingTileBoard>
+struct DFSPlayer: StateSpaceSearchPlayer {
     var visited = Set<SlidingTileBoard>()
     var collection = Stack<SlidingTileBoard>()
     

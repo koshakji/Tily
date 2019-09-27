@@ -8,8 +8,7 @@
 
 import Foundation
 
-class BFSPlayer: StateSpaceSearchPlayer {
-    typealias CollectionType = Queue<SlidingTileBoard>
+struct BFSPlayer: StateSpaceSearchPlayer {
     var visited = Set<SlidingTileBoard>()
     var collection = Queue<SlidingTileBoard>()
     

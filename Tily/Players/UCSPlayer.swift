@@ -8,8 +8,7 @@
 
 import Foundation
 
-class UCSPlayer: StateSpaceSearchPlayer {
-    typealias CollectionType = PriorityQueue<SlidingTileBoard>
+struct UCSPlayer: StateSpaceSearchPlayer {
     var visited = Set<SlidingTileBoard>()
     var collection = PriorityQueue<SlidingTileBoard>(sort: { $0.moves < $1.moves })
     var description: String { get { return "UCS" }}

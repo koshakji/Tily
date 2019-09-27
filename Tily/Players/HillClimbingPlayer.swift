@@ -8,8 +8,7 @@
 
 import Foundation
 
-class HillClimbingPlayer: StateSpaceSearchPlayer {
-    typealias CollectionType = PriorityQueue<SlidingTileBoard>
+struct HillClimbingPlayer: StateSpaceSearchPlayer {
     var visited = Set<SlidingTileBoard>()
     var collection = PriorityQueue<SlidingTileBoard>(sort: { ($0.mainManhattanDistance) < ($1.mainManhattanDistance) })
     var description: String { get { return "Hilly" }}
