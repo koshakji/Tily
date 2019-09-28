@@ -14,10 +14,9 @@ enum Direction: CaseIterable {
 
 protocol SlidingTileBoardDelegate {
     func slidingTileGameOver()
-    func squaresMoved(old: [Square], new: [Square])
 }
 
-final class SlidingTileBoard: Codable, StateSpaceSearchable {
+struct SlidingTileBoard: Codable, StateSpaceSearchable {
     let name: String
     let width : Int
     let height : Int
@@ -25,8 +24,15 @@ final class SlidingTileBoard: Codable, StateSpaceSearchable {
     var shapes = [Int: [Square]]()
     var moves : Int
     
-    //for saving path
-    var parent : SlidingTileBoard? = nil
+    // For saving move history
+    private var parents = [SlidingTileBoard]()
+    var parent: SlidingTileBoard? {
+        set {
+            if let value = newValue { parents.append(value) }
+        } get {
+            return parents.last
+        }
+    }
     
     var delegate : SlidingTileBoardDelegate?
     
@@ -65,7 +71,7 @@ final class SlidingTileBoard: Codable, StateSpaceSearchable {
         //self.delegate = game.delegate
     }
     
-    func initializeSquareShapes() {
+    mutating func initializeSquareShapes() {
         for (shape, squares) in shapes {
             for square in squares {
                 array[square.row][square.column].shape = shape
@@ -73,7 +79,7 @@ final class SlidingTileBoard: Codable, StateSpaceSearchable {
         }
     }
     
-    func canMove(shape: Int, _ direction: Direction) -> Bool {
+    func canMove(shape: Int, to direction: Direction) -> Bool {
         guard let squares = shapes[shape] else { return false }
         for square in squares {
             let location = nextSquareLocation(from: square, direction)
@@ -95,8 +101,8 @@ final class SlidingTileBoard: Codable, StateSpaceSearchable {
         }
     }
     
-    func move(shape: Int, _ direction: Direction) {
-        guard canMove(shape: shape, direction) else {
+    mutating func move(shape: Int, to direction: Direction) {
+        guard canMove(shape: shape, to: direction) else {
             return
         }
         var squares = shapes[shape]!
@@ -113,16 +119,16 @@ final class SlidingTileBoard: Codable, StateSpaceSearchable {
             movedShapeSquares.append(nextSquare)
         }
         
-        shapes[shape] = movedShapeSquares
-        moves += 1
-        delegate?.squaresMoved(old: squares, new: movedShapeSquares)
+        self.shapes[shape] = movedShapeSquares
+        self.moves += 1
         checkGameOver()
     }
     
-    func moveState(shape: Int, _ direction: Direction) -> SlidingTileBoard? {
-        if canMove(shape: shape, direction) {
-            let newGame = SlidingTileBoard(copyFrom: self)
-            newGame.move(shape: shape, direction)
+    func moveState(shape: Int, to direction: Direction, withDelegate delegate: SlidingTileBoardDelegate? = nil) -> SlidingTileBoard? {
+        if canMove(shape: shape, to: direction) {
+            var newGame = SlidingTileBoard(copyFrom: self)
+            newGame.delegate = delegate
+            newGame.move(shape: shape, to: direction)
             return newGame
         } else {
             return nil
@@ -135,8 +141,8 @@ final class SlidingTileBoard: Codable, StateSpaceSearchable {
         var result = Array<SlidingTileBoard>()
         for (shape, _) in shapes {
             for direction in allDirections {
-                if let state = moveState(shape: shape, direction) {
-                 result.append(state)
+                if let state = moveState(shape: shape, to: direction) {
+                    result.append(state)
                 }
             }
         }

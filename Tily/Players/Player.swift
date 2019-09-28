@@ -43,8 +43,8 @@ extension StateSpaceSearchPlayer {
                 for var nextNode in board.allPossibleNextStates() {
                     if !visited.contains(nextNode) {
                         countIn += 1
-                        collection.push(nextNode)
                         nextNode.parent = board
+                        collection.push(nextNode)
                     }
                 }
             }

@@ -147,7 +147,10 @@ class MainGameViewController: UIViewController {
         let location = getIandJ(from: button.tag)
         let shapeNumber = tileBoard.array[location.i][location.j].shape
         guard let shape = shapeNumber else { return }
-        tileBoard.move(shape: shape, direction)
+        guard let board = self.tileBoard.moveState(shape: shape, to: direction, withDelegate: self) else { return }
+//        self.tileBoard.move(shape: shape, direction)
+        self.tileBoard = board
+        self.setButtonColors()
     }
     
     func buildParents(_ starting: SlidingTileBoard) {
@@ -195,13 +198,6 @@ class MainGameViewController: UIViewController {
         }
     }
     
-    func setColorForSquares(set squares: Set<Square>) {
-        for square in squares {
-            let row = square.row
-            let column = square.column
-            setColorFor(button: buttons[row][column], i: row, j: column)
-        }
-    }
     
 
     
@@ -247,11 +243,6 @@ extension MainGameViewController: SlidingTileBoardDelegate {
         present(alertController, animated: true)
     }
     
-    func squaresMoved(old: [Square], new: [Square]) {
-        let both : [Square] = old + new
-        let bothSet = Set<Square>(both)
-        setColorForSquares(set: bothSet)
-    }
 }
 
 extension MainGameViewController : PlayerSelectionDelegate {

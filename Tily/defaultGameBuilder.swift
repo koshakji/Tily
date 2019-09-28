@@ -10,39 +10,39 @@ import Foundation
 
 struct DefaultGameBuilder {
     let games: [SlidingTileBoard]
-    
+
     init() {
-        
-        let one = SlidingTileBoard(name: "2 Pieces")
+
+        var one = SlidingTileBoard(name: "2 Pieces")
         one.shapes[0] = [one.array[1][0], one.array[0][0], one.array[0][1], one.array[0][2], one.array[1][2], one.array[2][2] ]
         one.shapes[1] = [one.array[1][1], one.array[2][1], one.array[2][0]]
         one.initializeSquareShapes()
-        
-        
-        let two = SlidingTileBoard(name: "3 Pieces")
+
+
+        var two = SlidingTileBoard(name: "3 Pieces")
         two.shapes[0] = [ two.array[1][0], two.array[2][0], two.array[2][1] ]
         two.shapes[1] = [ two.array[1][2], two.array[2][2], two.array[2][3], two.array[3][3] ]
         two.shapes[2] = [ two.array[3][1], two.array[3][2] ]
         two.initializeSquareShapes()
-        
-        
-        let three = SlidingTileBoard(name: "4 Pieces")
+
+
+        var three = SlidingTileBoard(name: "4 Pieces")
         three.shapes[0] = [ three.array[0][3], three.array[0][2], three.array[1][2] ]
         three.shapes[1] = [ three.array[1][0], three.array[1][1] ]
         three.shapes[2] = [ three.array[2][1], three.array[3][1], three.array[3][0] ]
         three.shapes[3] = [ three.array[2][2], three.array[3][2] ]
         three.initializeSquareShapes()
-        
-        
-        let four = SlidingTileBoard(name: "5 Pieces")
+
+
+        var four = SlidingTileBoard(name: "5 Pieces")
         four.shapes[0] = [ four.array[0][0], four.array[1][0] ]
         four.shapes[1] = [ four.array[2][0] ]
         four.shapes[2] = [ four.array[0][2], four.array[0][3] ]
         four.shapes[3] = [ four.array[1][2], four.array[2][2], four.array[2][3] ]
         four.shapes[4] = [ four.array[2][1], four.array[3][1], four.array[3][2] ]
         four.initializeSquareShapes()
-        
-        let five = SlidingTileBoard(name: "6 Pieces")
+
+        var five = SlidingTileBoard(name: "6 Pieces")
         five.shapes[0] = [ five.array[0][1] ]
         five.shapes[1] = [ five.array[1][0] ]
         five.shapes[2] = [ five.array[1][3] ]
@@ -50,8 +50,8 @@ struct DefaultGameBuilder {
         five.shapes[4] = [ five.array[0][2], five.array[1][2], five.array[1][1], five.array[2][2] ]
         five.shapes[5] = [ five.array[2][3], five.array[3][3], five.array[3][2] ]
         five.initializeSquareShapes()
-        
-        let six = SlidingTileBoard(name: "7 Pieces")
+
+        var six = SlidingTileBoard(name: "7 Pieces")
         six.shapes[0] = [ six.array[0][1], six.array[0][2], six.array[1][1] ]
         six.shapes[1] = [ six.array[1][0] ]
         six.shapes[2] = [ six.array[2][0] ]
@@ -60,8 +60,8 @@ struct DefaultGameBuilder {
         six.shapes[5] = [ six.array[2][2], six.array[2][3] ]
         six.shapes[6] = [ six.array[2][1], six.array[3][1], six.array[3][2] ]
         six.initializeSquareShapes()
-        
-        let seven = SlidingTileBoard(name: "8 Pieces")
+
+        var seven = SlidingTileBoard(name: "8 Pieces")
         seven.shapes[0] = [ seven.array[0][1], seven.array[0][2] ]
         seven.shapes[1] = [ seven.array[0][3], seven.array[1][3] ]
         seven.shapes[2] = [ seven.array[1][0], seven.array[1][1] ]
@@ -72,7 +72,7 @@ struct DefaultGameBuilder {
         seven.shapes[7] = [ seven.array[3][2] ]
         seven.initializeSquareShapes()
         
-        let eight = SlidingTileBoard(name: "9 Pieces")
+        var eight = SlidingTileBoard(name: "9 Pieces")
         eight.shapes[0] = [ eight.array[0][0], eight.array[0][1] ]
         eight.shapes[1] = [ eight.array[1][0], eight.array[2][0] ]
         eight.shapes[2] = [ eight.array[2][1], eight.array[3][1] ]
@@ -83,8 +83,8 @@ struct DefaultGameBuilder {
         eight.shapes[7] = [ eight.array[3][2] ]
         eight.shapes[8] = [ eight.array[0][2], eight.array[1][2], eight.array[1][3] ]
         eight.initializeSquareShapes()
-        
-        let nine = SlidingTileBoard(name: "10 Pieces")
+
+        var nine = SlidingTileBoard(name: "10 Pieces")
         nine.shapes[0] = [ nine.array[0][0] ]
         nine.shapes[1] = [ nine.array[1][0] ]
         nine.shapes[2] = [ nine.array[1][1] ]
@@ -96,8 +96,8 @@ struct DefaultGameBuilder {
         nine.shapes[8] = [ nine.array[3][1], nine.array[3][2] ]
         nine.shapes[9] = [ nine.array[0][1], nine.array[0][2], nine.array[0][3] ]
         nine.initializeSquareShapes()
-        
-        let ten = SlidingTileBoard(name: "11 Pieces")
+
+        var ten = SlidingTileBoard(name: "11 Pieces")
         ten.shapes[0] = [ ten.array[0][0] ]
         ten.shapes[1] = [ ten.array[0][1] ]
         ten.shapes[2] = [ ten.array[0][2] ]
@@ -110,8 +110,8 @@ struct DefaultGameBuilder {
         ten.shapes[9] = [ ten.array[3][2], ten.array[3][3] ]
         ten.shapes[10] = [ ten.array[1][1], ten.array[2][1], ten.array[2][2] ]
         ten.initializeSquareShapes()
-        
-        let eleven = SlidingTileBoard(name: "12 Pieces")
+
+        var eleven = SlidingTileBoard(name: "12 Pieces")
         eleven.shapes[0] = [ eleven.array[0][0] ]
         eleven.shapes[1] = [ eleven.array[0][1] ]
         eleven.shapes[2] = [ eleven.array[0][2] ]
@@ -126,7 +126,7 @@ struct DefaultGameBuilder {
         eleven.shapes[11] = [ eleven.array[1][1], eleven.array[2][1], eleven.array[2][2] ]
         eleven.initializeSquareShapes()
 
-        let twelve = SlidingTileBoard(name: "13 Pieces")
+        var twelve = SlidingTileBoard(name: "13 Pieces")
         twelve.shapes[0] = [ twelve.array[0][0] ]
         twelve.shapes[1] = [ twelve.array[0][1] ]
         twelve.shapes[2] = [ twelve.array[0][2] ]
@@ -141,8 +141,8 @@ struct DefaultGameBuilder {
         twelve.shapes[11] = [ twelve.array[3][2] ]
         twelve.shapes[12] = [ twelve.array[1][2], twelve.array[2][1], twelve.array[2][2] ]
         twelve.initializeSquareShapes()
-        
-        let thirteen = SlidingTileBoard(name: "14 Pieces")
+
+        var thirteen = SlidingTileBoard(name: "14 Pieces")
         thirteen.shapes[0] = [ thirteen.array[0][0] ]
         thirteen.shapes[1] = [ thirteen.array[0][1] ]
         thirteen.shapes[2] = [ thirteen.array[0][2] ]
@@ -158,8 +158,8 @@ struct DefaultGameBuilder {
         thirteen.shapes[12] = [ thirteen.array[3][1] ]
         thirteen.shapes[13] = [ thirteen.array[2][2], thirteen.array[3][2] ]
         thirteen.initializeSquareShapes()
-        
-        let forteen = SlidingTileBoard(name: "15 Pieces")
+
+        var forteen = SlidingTileBoard(name: "15 Pieces")
         forteen.shapes[0] = [ forteen.array[0][0] ]
         forteen.shapes[1] = [ forteen.array[0][1] ]
         forteen.shapes[2] = [ forteen.array[0][2] ]
@@ -176,18 +176,18 @@ struct DefaultGameBuilder {
         forteen.shapes[13] = [ forteen.array[3][1] ]
         forteen.shapes[14] = [ forteen.array[3][2] ]
         forteen.initializeSquareShapes()
-        
-        
-        let fifteen = SlidingTileBoard(name: "5 Pieces 2.0")
+
+
+        var fifteen = SlidingTileBoard(name: "5 Pieces 2.0")
         fifteen.shapes[0] = [ fifteen.array[0][3] ]
         fifteen.shapes[1] = [ fifteen.array[3][3] ]
         fifteen.shapes[2] = [ fifteen.array[2][0], fifteen.array[2][1] ]
         fifteen.shapes[3] = [ fifteen.array[3][0], fifteen.array[3][1] ]
         fifteen.shapes[4] = [ fifteen.array[1][1], fifteen.array[1][2], fifteen.array[2][2], fifteen.array[2][3], fifteen.array[3][2] ]
         fifteen.initializeSquareShapes()
-        
+
         games = [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, forteen, fifteen]
     }
-    
-    
+
+
 }
