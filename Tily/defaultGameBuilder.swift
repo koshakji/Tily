@@ -178,7 +178,7 @@ struct DefaultGameBuilder {
         forteen.initializeSquareShapes()
 
 
-        var fifteen = SlidingTileBoard(name: "5 Pieces 2.0")
+        var fifteen = SlidingTileBoard(name: "5 Pieces v2")
         fifteen.shapes[0] = [ fifteen.array[0][3] ]
         fifteen.shapes[1] = [ fifteen.array[3][3] ]
         fifteen.shapes[2] = [ fifteen.array[2][0], fifteen.array[2][1] ]
@@ -186,7 +186,7 @@ struct DefaultGameBuilder {
         fifteen.shapes[4] = [ fifteen.array[1][1], fifteen.array[1][2], fifteen.array[2][2], fifteen.array[2][3], fifteen.array[3][2] ]
         fifteen.initializeSquareShapes()
 
-        games = [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, forteen, fifteen]
+        games = [one, two, three, four, fifteen, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, forteen]
     }
 
 
