@@ -23,9 +23,10 @@ class GameChooserTableViewController: UITableViewController {
             fatalError()
         }
         
-        if launchedBefore! {
+        if let launched = launchedBefore, launched == true {
             games = tileBoardFileManager.read()
         } else {
+            performSegue(withIdentifier: "AboutSegue", sender: self)
             games = DefaultGameBuilder().games
             guard tileBoardFileManager.save(games: games) else { fatalError() }
         }
