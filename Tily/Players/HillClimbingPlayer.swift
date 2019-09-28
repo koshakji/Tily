@@ -11,5 +11,5 @@ import Foundation
 struct HillClimbingPlayer: StateSpaceSearchPlayer {
     var visited = Set<SlidingTileBoard>()
     var collection = PriorityQueue<SlidingTileBoard>(sort: { ($0.calculateMainManhattenDistance()) < ($1.calculateMainManhattenDistance()) })
-    var description: String { get { return "Hilly" }}
+    var description: String { get { return "Hill Climbing" }}
 }
