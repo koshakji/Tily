@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		160466A1234917F5007EDE75 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160466A0234917F5007EDE75 /* AboutViewController.swift */; };
+		160466A3234A2F89007EDE75 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160466A2234A2F89007EDE75 /* GameTableViewCell.swift */; };
 		16086D332181E71E0002F8E0 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D322181E71E0002F8E0 /* Stack.swift */; };
 		16086D352181E8720002F8E0 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D342181E8720002F8E0 /* Queue.swift */; };
 		16086D372181E9C40002F8E0 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16086D362181E9C40002F8E0 /* PriorityQueue.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		160466A0234917F5007EDE75 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		160466A2234A2F89007EDE75 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		16086D322181E71E0002F8E0 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		16086D342181E8720002F8E0 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		16086D362181E9C40002F8E0 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
@@ -88,9 +90,10 @@
 		16086D44218A11580002F8E0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				16DB09A9217906DF00EF1487 /* GameChooserTableViewController.swift */,
+				160466A2234A2F89007EDE75 /* GameTableViewCell.swift */,
 				16DB098F21762D4F00EF1487 /* ViewController.swift */,
 				16086D42218A111C0002F8E0 /* PlayerSelectionTableViewController.swift */,
-				16DB09A9217906DF00EF1487 /* GameChooserTableViewController.swift */,
 				160466A0234917F5007EDE75 /* AboutViewController.swift */,
 			);
 			path = ViewControllers;
@@ -99,6 +102,7 @@
 		16086D45218A11710002F8E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1642964621B0304E001B35BD /* StateSpace.swift */,
 				16DB09A521788FE200EF1487 /* SlidingTileBoard.swift */,
 				16DB09A121762E2200EF1487 /* Square.swift */,
 			);
@@ -124,7 +128,6 @@
 		16DB098C21762D4F00EF1487 /* Tily */ = {
 			isa = PBXGroup;
 			children = (
-				1642964621B0304E001B35BD /* StateSpace.swift */,
 				16086D2F2181E4BB0002F8E0 /* Collections */,
 				16DB09D0217EF76A00EF1487 /* Players */,
 				16086D45218A11710002F8E0 /* Model */,
@@ -242,6 +245,7 @@
 				16086D332181E71E0002F8E0 /* Stack.swift in Sources */,
 				16DB09AA217906DF00EF1487 /* GameChooserTableViewController.swift in Sources */,
 				16DB09D2217EF7B600EF1487 /* DFSPlayer.swift in Sources */,
+				160466A3234A2F89007EDE75 /* GameTableViewCell.swift in Sources */,
 				16DB09A621788FE200EF1487 /* SlidingTileBoard.swift in Sources */,
 				16086D3D218358740002F8E0 /* Heap.swift in Sources */,
 				16DB099021762D4F00EF1487 /* ViewController.swift in Sources */,

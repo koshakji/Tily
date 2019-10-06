@@ -157,30 +157,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="gameCell" textLabel="mPf-lf-6IP" detailTextLabel="dWE-cw-6qz" style="IBUITableViewCellStyleSubtitle" id="el0-xd-wWW">
-                                <rect key="frame" x="0.0" y="28" width="768" height="55.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="gameCell" rowHeight="80" id="el0-xd-wWW" customClass="GameTableViewCell" customModule="Tily" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="768" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="el0-xd-wWW" id="FlO-lH-rwI">
-                                    <rect key="frame" x="0.0" y="0.0" width="737" height="55.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="737" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mPf-lf-6IP">
-                                            <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqd-CJ-aqM">
+                                            <rect key="frame" x="80" y="30" width="637" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dWE-cw-6qz">
-                                            <rect key="frame" x="20" y="31.5" width="33" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hse-hQ-Vcf">
+                                            <rect key="frame" x="20" y="15" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="FFT-U3-2MS"/>
+                                                <constraint firstAttribute="width" secondItem="hse-hQ-Vcf" secondAttribute="height" multiplier="1:1" id="GPn-xs-5I0"/>
+                                            </constraints>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="dqd-CJ-aqM" secondAttribute="trailing" constant="20" symbolic="YES" id="c4K-Ev-aEr"/>
+                                        <constraint firstItem="hse-hQ-Vcf" firstAttribute="leading" secondItem="FlO-lH-rwI" secondAttribute="leading" constant="20" symbolic="YES" id="hAm-Km-c9g"/>
+                                        <constraint firstItem="hse-hQ-Vcf" firstAttribute="centerY" secondItem="FlO-lH-rwI" secondAttribute="centerY" id="kfi-O3-jbq"/>
+                                        <constraint firstItem="dqd-CJ-aqM" firstAttribute="leading" secondItem="hse-hQ-Vcf" secondAttribute="trailing" constant="10" id="q51-9L-7XG"/>
+                                        <constraint firstItem="dqd-CJ-aqM" firstAttribute="centerY" secondItem="FlO-lH-rwI" secondAttribute="centerY" id="u0P-Ni-Y78"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="mainStackView" destination="hse-hQ-Vcf" id="6UY-GM-npD"/>
+                                    <outlet property="titleLabel" destination="dqd-CJ-aqM" id="bma-zp-V3j"/>
                                     <segue destination="BYZ-38-t0r" kind="presentation" identifier="loadGameSegue" modalPresentationStyle="fullScreen" id="TEG-6e-H0B"/>
                                 </connections>
                             </tableViewCell>
@@ -210,7 +218,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="712" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
-                            <tableViewSection headerTitle="About Game" id="I0P-Yb-nYz">
+                            <tableViewSection headerTitle="How To Play" id="I0P-Yb-nYz">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="rCC-2F-aYN" rowHeight="100" style="IBUITableViewCellStyleDefault" id="6iN-JK-ttS">
                                         <rect key="frame" x="20" y="55.5" width="672" height="100"/>
@@ -319,7 +327,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="About Me" id="eaE-u4-Gww">
+                            <tableViewSection headerTitle="About" id="eaE-u4-Gww">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="skC-Ow-SDF" rowHeight="70" style="IBUITableViewCellStyleDefault" id="IZF-k9-fcm">
                                         <rect key="frame" x="20" y="711.5" width="672" height="70"/>

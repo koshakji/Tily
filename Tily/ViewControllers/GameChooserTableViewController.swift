@@ -43,11 +43,12 @@ class GameChooserTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath) as! GameTableViewCell
         let game = games[indexPath.row]
-        cell.textLabel?.text = game.name
-        cell.imageView?.image = UIImage(named: game.name)
-        cell.detailTextLabel?.text = nil
+        cell.setup(with: game)
+//        cell.textLabel?.text = game.name
+//        cell.imageView?.image = UIImage(named: game.name)
+//        cell.detailTextLabel?.text = nil
         return cell
     }
     

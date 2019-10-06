@@ -34,7 +34,7 @@ class MainGameViewController: UIViewController {
             for j in 0 ..< tileBoard.width {
                 let view = UIView()
                 
-                setColorFor(button: view, i: i, j: j)
+                Self.setColorFor(tileBoard: self.tileBoard, button: view, i: i, j: j)
                 view.tag = i * tileBoard.width + j
                 addGestureRecognizors(to: view)
                 view.translatesAutoresizingMaskIntoConstraints = false
@@ -185,7 +185,7 @@ class MainGameViewController: UIViewController {
     }
     
     // MARK: Coloring
-    func setColorFor(button: UIView, i: Int, j: Int) {
+    static func setColorFor(tileBoard: SlidingTileBoard, button: UIView, i: Int, j: Int) {
         let number = tileBoard.array[i][j].shape ?? colors.count - 1
         button.backgroundColor = colors[number]
     }
@@ -193,7 +193,7 @@ class MainGameViewController: UIViewController {
     func setButtonColors() {
         for i in 0 ..< buttons.count {
             for j in 0 ..< buttons[i].count {
-                setColorFor(button: buttons[i][j], i: i, j: j)
+                Self.setColorFor(tileBoard: self.tileBoard, button: buttons[i][j], i: i, j: j)
             }
         }
     }
@@ -210,27 +210,15 @@ class MainGameViewController: UIViewController {
     }
     
     // MARK: Defining Colors
-    var colors = [
-        UIColor(red: 255/255, green: 30/255, blue: 30/255, alpha: 1), //main red
-        UIColor(red: 199/255, green: 242/255, blue: 113/255, alpha: 1), //light green
-        UIColor(red: 25/255, green: 48/255, blue: 122/255, alpha: 1), //dark blue
-        UIColor(red: 198/255, green: 66/255, blue: 140/255, alpha: 1), //medium pink
-        UIColor(red: 34/255, green: 4/255, blue: 57/255, alpha: 1), //dark violet hello
-        
-        UIColor(red: 68/255, green: 91/255, blue: 167/255, alpha: 1), //medium blue
-        UIColor(red: 32/255, green: 205/255, blue: 221/255, alpha: 1), //cyan ish
-        UIColor(red: 66/255, green: 197/255, blue: 66/255, alpha: 1), //medium green
-        UIColor(red: 83/255, green: 43/255, blue: 114/255, alpha: 1), //medium violet hello
-        UIColor(red: 247/255, green: 196/255, blue: 82/255, alpha: 1), //medium yellow
-        
-        UIColor(red: 51/255, green: 142/255, blue: 150/255, alpha: 1), // medium cyan?
-        UIColor(red: 148/255, green: 118/255, blue: 171/255, alpha: 1), //light violet hello
-        UIColor(red: 148/255, green: 164/255, blue: 218/255, alpha: 1), //light blue
-        UIColor(red: 255/255, green: 127/255, blue: 21/255, alpha: 1), //orangeish
-        UIColor(red: 232/255, green: 148/255, blue: 196/255, alpha: 1), //light pink
-        
-        UIColor.white
-    ]
+    static var colors: [UIColor] { get {
+        var colors = [UIColor]()
+        for i in 0 ... 16 {
+            colors.append(UIColor(named: "Color-\(i)") ?? UIColor.clear)
+        }
+        colors.append(UIColor.white)
+        return colors
+        }
+    }
     
     
 }
