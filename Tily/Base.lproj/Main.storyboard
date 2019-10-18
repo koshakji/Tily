@@ -299,7 +299,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qan-qz-Cjb">
                                                     <rect key="frame" x="15" y="0.0" width="642" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <string key="text">In the bottom-left of the game screen there's a players button, It lets you pick from a few algorithms which can solve any game, with varying levels of efficiency.</string>
+                                                    <string key="text">In the bottom-left of the game screen, there's a players button, It lets you pick from a few algorithms which can solve any game, with varying levels of efficiency.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
