@@ -227,7 +227,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="672" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="The goal of the game is to move the main piece to the rightmost bottom position it can fit in, in the minimum number of moves." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rCC-2F-aYN">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="The goal of the game is to move the main tile to the rightmost bottom position it can fit in, in the minimum number of moves." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rCC-2F-aYN">
                                                     <rect key="frame" x="15" y="0.0" width="642" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -244,7 +244,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="672" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Every piece has a unique color, white is always a free space, and red is always the main piece." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g7n-yp-eRV">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Every tile has a unique color, white is always a free space, and red is always the main tile." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g7n-yp-eRV">
                                                     <rect key="frame" x="15" y="0.0" width="642" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -264,7 +264,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f9I-hH-t6k">
                                                     <rect key="frame" x="15" y="0.0" width="642" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <string key="text">You can move a piece by swiping it towards any free space. if there's no free space in the direction of your swipe, the piece will not move and no moves will be counted.</string>
+                                                    <string key="text">You can move a tile by swiping it towards any free space. if there's no free space in the direction of your swipe, the tile will not move and no moves will be counted.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -279,7 +279,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="672" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="You can only move pieces up, down, right and left. There's no diagonal movement." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JBD-fq-eOn">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="You can only move tiles up, down, right and left. There's no diagonal movement." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JBD-fq-eOn">
                                                     <rect key="frame" x="15" y="0.0" width="642" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
