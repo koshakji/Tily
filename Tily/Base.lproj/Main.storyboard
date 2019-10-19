@@ -388,7 +388,13 @@
                             <outlet property="delegate" destination="EfN-vO-NK8" id="bmw-Oj-eT8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="About" id="1sk-wz-63v"/>
+                    <navigationItem key="navigationItem" title="About" id="1sk-wz-63v">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Gng-hE-itj" userLabel="Dismiss">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="EfN-vO-NK8" id="bRk-NI-T6W"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="boy-Uw-xeo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
