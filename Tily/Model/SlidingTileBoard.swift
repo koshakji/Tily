@@ -211,10 +211,6 @@ struct SlidingTileBoard: Codable, StateSpaceSearchable {
     }
 }
 
-extension SlidingTileBoardDelegate {
-    func squaresMoved(old: [Square], new: [Square]) {}
-}
-
 
 extension SlidingTileBoard : Hashable {
     func hash(into hasher: inout Hasher) {
